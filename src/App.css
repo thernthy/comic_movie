@@ -1,3 +1,22 @@
+body::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #9e9e9e;
+}
+
+body::-webkit-scrollbar
+{
+	width: 6px;
+	background-color:#9e9e9e;
+}
+
+body::-webkit-scrollbar-thumb
+{
+	background-color: #9e9e9e;
+}
+
+
+
 .rounded-br-148{
   border-bottom-right-radius: 148px;
 }
@@ -54,10 +73,48 @@ ul.menue_wrapper{
   z-index: 100;
 }
 ul.filterOut{
-  transform: translateX(-10000px);
+  transform: translateX(0px);
 }
 
 
 .fileterActive{
   transform: translateX(0);
+}
+
+li.activeFilter {
+  position: relative; /* Ensure positioning context for pseudo-elements */
+  transition: all .5s ease-in-out;
+}
+
+li.activeFilter::before,
+li.activeFilter::after {
+  content: ''; /* Necessary for pseudo-elements */
+  position: absolute;
+  width: 72px;
+  height: 22px;
+  background-color: transparent; /* Set background color as needed */
+  transition: all 1s ease-in-out;
+  border-radius: 100%;
+}
+
+li.activeFilter::before {
+  bottom: -20px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: rgba(255, 255, 255, 0.938);
+}
+
+li.activeFilter::after {
+  top: -20px; /* Position above the element */
+  left: 50%; /* Position horizontally in the center */
+  transform: translateX(-50%); 
+  background-color: rgba(255, 255, 255, 0.938);
+}
+
+.comic_item_card {
+  transition: transform 0.3s ease;
+}
+
+.comic_items_wrapper > .comic_item_card:hover {
+  transform: scale(1.02);
 }
