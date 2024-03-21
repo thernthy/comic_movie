@@ -6,6 +6,7 @@ import { useState } from 'react';
 function App() {
   const [selectedLink, setSelectedLink] = useState('/home');
   const [pageTitle, setPageTitle] = useState('모든 만화');
+  const [pageActiveAnimation, setPageActiveAnimation] = useState('pageActive');
   const handleMenuClick = (link, pageTitle) => {
     setSelectedLink(link);
     setPageTitle(pageTitle)
@@ -16,7 +17,7 @@ function App() {
           <Navbar onMenuSwich={handleMenuClick} />
         </header>
         <div className='body-wrapper pt-48 bg-slate-300'>
-          <Bodycard selectedLink={selectedLink} pageTile={pageTitle} onMenuSwich={handleMenuClick}/>
+          <Bodycard selectedLink={selectedLink} pageTile={pageTitle} doPageActiveAnime={pageActiveAnimation} onMenuSwich={handleMenuClick}/>
         </div>
     </div>
   );

@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import cardItemIformation from '../data/Carddata';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faHeart, faCalendar} from '@fortawesome/free-solid-svg-icons';
-function DetialPage({comicTitle}){
+function DetialPage({comicTitle, doPageActiveAnime}){
+    useEffect(() => {
+        const detail_wrapper = document.querySelector('.detail_wrapper')
+        detail_wrapper.classList.add(doPageActiveAnime)
+    }, [])
     const filteredComic = cardItemIformation.filter(item => item.comic_name === comicTitle);
     if (filteredComic.length === 0) {
         return <div>Comic not found!</div>;
       }
       const comic = filteredComic[0];
       return (
-        <div className=" lg:px-14">
+        <div className="detail_wrapper lg:px-14">
               <div className="flex flex-col lg:flex-row justify-between items-center">
                 <div className=" h-80 w-7/12 flex flex-row justify-center items-center bg-slate-200">
                     <img src={comic.comic_cover_photo} title={comic.comic_name} className=" h-5/6"/>

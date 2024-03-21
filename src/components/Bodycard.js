@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import cardItemIformation from '../data/Carddata';
 import Home from "../wigget/Home";
 import DetialPage from "../wigget/Detailpage";
-function Bodycard({ selectedLink, pageTile, onMenuSwich}) {
+function Bodycard({ selectedLink, pageTile, onMenuSwich, doPageActiveAnime}) {
     const [comicTitle, setComicTitle] = useState('')
     useEffect(()=>{
         const comicItems = document.querySelectorAll('.comic_item_card');
@@ -30,9 +30,9 @@ function Bodycard({ selectedLink, pageTile, onMenuSwich}) {
     return(
         <div className=" px-12">
             <h2 className=" text-gray-600 font-bold text-center text-3xl pb-7">{pageTile}</h2>
-            {selectedLink=== '/home' && <Home  viewDetail={handleComicview}/>}
-            {selectedLink=== '/filtur' && <Home  viewDetail={handleComicview}/>}
-            {selectedLink === `viewdetail/${comicTitle}` && <DetialPage comicTitle={comicTitle} />}
+            {selectedLink=== '/home' && <Home  viewDetail={handleComicview} doPageActiveAnime={doPageActiveAnime} />}
+            {selectedLink=== '/filtur' && <Home  viewDetail={handleComicview} doPageActiveAnime={doPageActiveAnime}/>}
+            {selectedLink === `viewdetail/${comicTitle}` && <DetialPage comicTitle={comicTitle} doPageActiveAnime={doPageActiveAnime} />}
         </div>
     )
 }

@@ -1,10 +1,14 @@
 import { faDrum } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { useEffect } from "react";
 import cardItemIformation from '../data/Carddata';
-function Home({viewDetail}) {
+function Home({viewDetail, doPageActiveAnime}) {
     const viewDetailComic = (path, name) => {
         viewDetail(path, name)
     }
+    useEffect(() => {
+        const CardWrapper = document.querySelector('.comic-card-wrapper')
+        CardWrapper.classList.add(doPageActiveAnime);
+    }, [])
     return(
         <div className="comic-card-wrapper">
                <ul className="comic_items_wrapper grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
