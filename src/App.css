@@ -16,10 +16,12 @@ li.shearbutton{
 }
 li.sh-btn-active{
   transform: translateX(50px);
+  animation-name: opacityChange 1s ease-in-out;
 }
 
 li.sh-btn-inactive{
  transform: translateX(1000px);
+ animation-name: opacityChange 1s ease-in-out;
 }
 
 div.filter-icon-wrapper {
@@ -35,6 +37,17 @@ div.filter-icon-wrapper {
 @keyframes fadeIn {
   0% { background-color: transparent; }
   100% { background-color: #ff0000; }
+}
+@keyframes opacityChange{
+  0%{
+    opacity: .5;
+  }
+  50%{
+    opacity: .8;
+  }
+  100%{
+    opacity: 1;
+  }
 }
 ul.menue_wrapper{
   transition: all 2s ease-in-out;
