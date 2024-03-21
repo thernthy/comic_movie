@@ -10,18 +10,18 @@ function DetialPage({comicTitle}){
       const comic = filteredComic[0];
       return (
         <div className=" lg:px-14">
-              <div className="flex flex-col lg:flex-row justify-between items-start">
+              <div className="flex flex-col lg:flex-row justify-between items-center">
                 <div className=" h-80 w-7/12 flex flex-row justify-center items-center bg-slate-200">
                     <img src={comic.comic_cover_photo} title={comic.comic_name} className=" h-5/6"/>
                 </div>
                 <div className="">
                     <div className="px-2 py-3">
-                        <p>{comic.comic_dcr}</p>
+                        <p className=" leading-relaxed">{comic.comic_dcr}</p>
                     </div>
                     <div className="user_take_action btn flex flex-row  justify-start items-center mt-3">
-                        <button className=" outline-none px-5 py-2 bg-lime-600 rounded-md mx-2 whitespace-normal font-semibold"><FontAwesomeIcon icon={faHeart}  className=" shadow-md"/><span>Favorite</span></button>
-                        <button className=" outline-none px-5 py-2 bg-red-400 rounded-md mx-2 whitespace-normal font-semibold"><FontAwesomeIcon icon={faHeart}   className=" shadow-md"/><span>Favorite</span></button>
-                        <button className=" outline-none px-5 py-2 bg-slate-600 rounded-md mx-2 whitespace-normal font-semibold"><FontAwesomeIcon icon={faHeart} className=" shadow-md" /><span>Favorite</span></button>
+                        <button  className="flex flex-row justify-between items-center outline-none px-3 py-2 bg-lime-600 rounded-xl mx-2 whitespace-normal font-semibold"><FontAwesomeIcon icon={faHeart}  className=" shadow-md p-3 rounded-full mr-3 text-red-50"/><span>Favorite</span></button>
+                        <button  className="flex flex-row justify-between items-center outline-none px-3 py-2 bg-red-400 rounded-xl  mx-2 whitespace-normal font-semibold"><FontAwesomeIcon icon={faHeart}   className=" shadow-md p-3 rounded-full mr-3 text-red-50"/><span>Favorite</span></button>
+                        <button  className="flex flex-row justify-between items-center outline-none px-3 py-2 bg-slate-600 rounded-xl  mx-2 whitespace-normal font-semibold"><FontAwesomeIcon icon={faHeart} className=" shadow-md p-3 rounded-full mr-3 text-red-50" /><span>Favorite</span></button>
                     </div>
                 </div>
               </div>
@@ -29,7 +29,7 @@ function DetialPage({comicTitle}){
                 <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
                     {
                         cardItemIformation.map((Element, key) => (
-                            <li key={key}>
+                            <li key={key} className=" relative">
                                     <img className="h-60" src={Element.comic_cover_photo} />
                                 <div>
                                     <div className="title_wrapper">
@@ -37,6 +37,9 @@ function DetialPage({comicTitle}){
                                     </div>
                                     <h4><FontAwesomeIcon icon={faCalendar} /> <span>20/3/2023</span></h4>
                                 </div>
+                                {/*<div className="ep p-4 rounded-full absolute bottom-2/4 z-10 -right-1/2 -translate-x-2/4 -translate-y-2/4 bg-red-600">
+                                    <h2 className=" text-center">1</h2>
+                                </div>*/}
                             </li>
                         ))
                     }   
