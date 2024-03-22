@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import cardItemIformation from '../data/Carddata';
 import Home from "../wigget/Home";
 import DetialPage from "../wigget/Detailpage";
+import Login from "../wigget/Login";
 function Bodycard({ selectedLink, pageTile, onMenuSwich, doPageActiveAnime}) {
     const [comicTitle, setComicTitle] = useState('')
     useEffect(()=>{

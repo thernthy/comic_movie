@@ -119,38 +119,4 @@ li.activeFilter::after {
   transform: scale(1.02);
 }
 
-.comic-card-wrapper.pageActive{
-  animation: FadceUp .5s forwards;
-}
-.detail_wrapper.pageActive{
-  animation: FadceUpSkewY .5s forwards;
-}
 
-@keyframes FadceUp{
-  0%{
-    transform: translateY(100%);
-    filter: blur(4px);
-  }
-  50%{
-    transform: translateY(50%);
-    filter: blur(2px);
-  }
-  100%{
-    filter: blur(0);
-    transform: translateY(0);
-  }
-}
-@keyframes FadceUpSkewY{
-  0%{
-    transform: translateY(-100%);
-    filter: blur(4px);
-  }
-  50%{
-    transform: translateY(50%);
-    filter: blur(2px);
-  }
-  100%{
-    filter: blur(0);
-    transform:translateY(0);
-  }
-}

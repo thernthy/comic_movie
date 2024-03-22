@@ -1,17 +1,54 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import cardItemIformation from '../data/Carddata';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faHeart, faCalendar} from '@fortawesome/free-solid-svg-icons';
+import { data } from "autoprefixer";
 function DetialPage({comicTitle, doPageActiveAnime}){
+    const [currentDate, setCurrentDate] = useState(new Date());
     useEffect(() => {
         const detail_wrapper = document.querySelector('.detail_wrapper')
         detail_wrapper.classList.add(doPageActiveAnime)
     }, [])
+
     const filteredComic = cardItemIformation.filter(item => item.comic_name === comicTitle);
     if (filteredComic.length === 0) {
         return <div>Comic not found!</div>;
       }
       const comic = filteredComic[0];
+      const comicEp = [
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:1, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:2, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:3, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:4, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:5, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:6, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:7, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:8, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:9, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:10, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:11, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:12, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:13, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:14, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:15, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:16, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:17, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:18, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:19, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:20, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:21, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:22, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:23, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:24, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:25, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:26, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:27, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:28, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:29, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:30, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:31, created_at:currentDate.toLocaleString()},
+        {comicName: comic.comic_name, cover_photo:comic.comic_cover_photo, epsode:32, created_at:currentDate.toLocaleString()},
+      ]
       return (
         <div className="detail_wrapper lg:px-14">
               <div className="flex flex-col lg:flex-row justify-between items-center">
@@ -32,18 +69,18 @@ function DetialPage({comicTitle, doPageActiveAnime}){
               <div className="pt-5">
                 <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
                     {
-                        cardItemIformation.map((Element, key) => (
+                        comicEp.map((Element, key) => (
                             <li key={key} className=" relative">
-                                    <img className="h-60" src={Element.comic_cover_photo} />
+                                    <img className="h-60" src={Element.cover_photo} />
                                 <div>
                                     <div className="title_wrapper">
-                                        <h3 className=" text-gray-600 underline">{Element.comic_name}</h3>
+                                        <h3 className=" text-gray-600 underline">{Element.comicName}</h3>
                                     </div>
-                                    <h4><FontAwesomeIcon icon={faCalendar} /> <span>20/3/2023</span></h4>
+                                    <h4><FontAwesomeIcon icon={faCalendar} /> <span>{Element.created_at}</span></h4>
                                 </div>
-                                {/*<div className="ep p-4 rounded-full absolute bottom-2/4 z-10 -right-1/2 -translate-x-2/4 -translate-y-2/4 bg-red-600">
-                                    <h2 className=" text-center">1</h2>
-                                </div>*/}
+                                <div className="ep p-4 rounded-full absolute bottom-2/4 z-10 -right-1/2 -translate-x-2/4 -translate-y-2/4 bg-red-600">
+                                    <h2 className=" text-center">{Element.epsode}</h2>
+                                </div>
                             </li>
                         ))
                     }   

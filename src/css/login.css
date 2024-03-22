@@ -1,0 +1,199 @@
+.login-wrapper{
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.login-wrapper .background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.login-wrapper .background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+    animation: backgrounndBtT 1s forwards;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+    animation: backgrounndBt 1s forwards;
+}
+.login-wrapper form{
+    height: 520px;
+    width: 400px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    padding: 50px 35px;
+}
+.login-wrapper form.inactive{
+    /* opacity: 0; */
+}
+.login-wrapper form:first-child{
+ z-index: 10;
+ transform: translateX(50%);
+ animation: fedeInL .8s forwards;
+ position: relative;
+ /* animation: loginLoadingForm .6s forwards; */
+}
+.login-wrapper form:last-child{
+ transform: translateX(-50%);
+ animation: fedeIn .8s forwards;
+ z-index: 5;
+}
+.login-wrapper .guest-log-wrapper{
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+.login-wrapper .guest-log-wrapper.active{
+    width: fit-content;
+}
+.login-wrapper .guest-log-wrapper.active form:last-child{
+    transform: translateX(0%);
+    z-index: 5;
+    animation: fedeOut .8s forwards;
+}
+.login-wrapper .guest-log-wrapper.active form:first-child{
+    transform: translateX(0%);
+    animation: fedeOutL .8s forwards;
+}
+.guest-log-wrapper .form-swich-btn{
+    z-index: 10;
+    position: absolute;
+    right: -10px;
+    bottom: 50%;
+    height: 20px;
+    border-radius: 50%;
+    width: 20px;
+    transform: translateY(-50%);
+}
+.guest-log-wrapper .form-swich-btn > svg{
+    color: white;
+    font-size: 1.2rem;
+}
+.login-wrapper form *{
+    font-family: 'Poppins',sans-serif;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+.login-wrapper form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+.login-wrapper form label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.login-wrapper form input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+.login-wrapper button{
+    margin-top: 50px;
+    width: 100%;
+    color: #080710;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+@keyframes loginLoadingForm {
+    from{
+        transform: scale(0); 
+    }
+    to{
+        transform:scale(1);
+    }
+}
+@keyframes backgrounndBt {
+    from{
+        right: -141px;
+        bottom: -185px;
+    }
+    to{
+        right: -30px;
+        bottom: -80px;
+    }
+}
+
+@keyframes fedeOut {
+    from{
+        transform: translateX(-50%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
+@keyframes fedeIn {
+    from{
+        transform: translateX(0%);
+    }
+    to{
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes fedeOutL {
+    from{
+        transform: translateX(50%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
+@keyframes fedeInL {
+    from{
+        transform: translateX(0%);
+    }
+    to{
+        transform: translateX(50%);
+    }
+}
+
+
+@keyframes backgrounndBtT {
+    from{
+        left: -200px;
+        top: -217px;
+    }
+    to{
+        right: -30px;
+        bottom: -80px;
+    }
+}
