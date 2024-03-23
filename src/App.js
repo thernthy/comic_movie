@@ -4,7 +4,11 @@ import Navbar from './components/Navbar';
 import Bodycard from './components/Bodycard';
 import { useState } from 'react';
 import './css/error.css'
+import { useStateContext } from "./Appcontrollers/ContextProvider"
 function App() {
+  const {user, token, setUser, setToken} = useStateContext();
+  console.log(token);
+
   const [selectedLink, setSelectedLink] = useState('/home');
   const [pageTitle, setPageTitle] = useState('모든 만화');
   const [pageActiveAnimation, setPageActiveAnimation] = useState('pageActive');

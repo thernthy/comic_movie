@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "../wigget/Login";
-import { Navigate, redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useStateContext } from "../Appcontrollers/ContextProvider"
 import { Outlet } from "react-router-dom";
 function Auth ()  {
-    return(
-        <>
-        <Navigate to={'/login'} />
-        <Outlet />
-        </>
-    );
+    const {token} = useStateContext();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (token) {
+          navigate('/'); // Navigate to home page
+        }
+      }, [token, navigate]);
+    return <Outlet />;
 }
 
 export default Auth;
