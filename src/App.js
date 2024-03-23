@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Bodycard from './components/Bodycard';
 import { useState } from 'react';
+import './css/error.css'
 function App() {
   const [selectedLink, setSelectedLink] = useState('/home');
   const [pageTitle, setPageTitle] = useState('모든 만화');

@@ -123,10 +123,9 @@
 ::placeholder{
     color: #e5e5e5;
 }
-.login-wrapper button{
+.login-wrapper > .guest-log-wrapper > form  button{
     margin-top: 50px;
     width: 100%;
-    color: #080710;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
