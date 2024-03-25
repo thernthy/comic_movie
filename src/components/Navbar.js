@@ -91,7 +91,7 @@ function Navbar({onMenuSwich, token, user}) {
 
                 {token? <li className="px-2 cursor-pointer" onClick={()=>Logout(token, user)}>Logout</li>:'' }
             </ul>
-            <ul className="shadow-md py-5 bg-slate-300 flex flex-row justify-between items-center">
+            <ul className="shadow-md py-2 bg-slate-300 flex flex-row justify-between items-center">
                 <li>
                     <ul className="px-4 flex flex-row justify-between items-center">
                         {

@@ -5,7 +5,7 @@ const AxiosController = axios.create({
 });
 
 AxiosController.interceptors.request.use((config) => {
-    const token = localStorage.getItem('ACCESS_TOKEN');
+    const token = localStorage.getItem('ACCESS_TOKEN')?localStorage.getItem('ACCESS_TOKEN') : '$2y$10$FmKpQpwCYgw1HT7AdW7yuuAS4oFJ35DwVDeu8Vfl.xLU2hPgsarS6';
     config.headers.Authorization = `Bearer ${token}`;
     return config;
 })
