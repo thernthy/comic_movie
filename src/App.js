@@ -10,6 +10,7 @@ function App() {
   const [selectedLink, setSelectedLink] = useState('/home');
   const [pageTitle, setPageTitle] = useState('모든 만화');
   const [pageActiveAnimation, setPageActiveAnimation] = useState('pageActive');
+  
   const handleMenuClick = (link, pageTitle) => {
     setSelectedLink(link);
     setPageTitle(pageTitle)

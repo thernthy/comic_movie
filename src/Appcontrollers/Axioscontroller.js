@@ -1,11 +1,9 @@
 import axios from "axios";
-import { error } from "console";
-import { response } from "express";
-import { config } from "yargs";
-
+const baseURL = process.env.REACT_APP_API_BASE_URL;
+console.log(process.env)
 const AxiosController = axios.create({
-    baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`
-})
+    baseURL: `${baseURL}/api`
+});
 
 
 AxiosController.interceptors.request.use((config) => {

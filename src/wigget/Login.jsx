@@ -3,7 +3,6 @@ import '../css/login.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft, faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import AlertContainer from "../components/Error";
-import AlertContainer from "../components/Error";
 // import Buttons from "./Sliderbutton";
 import { useStateContext }  from '../Appcontrollers/ContextProvider';
 import AxiosController from "../Appcontrollers/Axioscontroller";
