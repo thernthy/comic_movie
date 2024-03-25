@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faFilter, faLeaf} from '@fortawesome/free-solid-svg-icons';
+import Logout from "../Appcontrollers/Logout";
 import Menus from '../data/Menu';
 import { Link } from "react-router-dom";
 function Navbar({onMenuSwich, token, user}) {
@@ -88,7 +89,7 @@ function Navbar({onMenuSwich, token, user}) {
                 <li className="px-2">Catoon Request</li>
                 <li className="px-2">Announcements</li>
 
-                {token? <li className="px-2">Logout</li>:'' }
+                {token? <li className="px-2 cursor-pointer" onClick={()=>Logout(token, user)}>Logout</li>:'' }
             </ul>
             <ul className="shadow-md py-5 bg-slate-300 flex flex-row justify-between items-center">
                 <li>

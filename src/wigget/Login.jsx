@@ -3,13 +3,14 @@ import '../css/login.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft, faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import AlertContainer from "../components/Error";
-// import Buttons from "./Sliderbutton";
 import { useStateContext }  from '../Appcontrollers/ContextProvider';
 import AxiosController from "../Appcontrollers/Axioscontroller";
 
 function Login () {
     const {setUser, setToken} = useStateContext();
     const [componetclassActive, setCompentActiveClass] = useState('')
+    const [loding, setLoading] = useState(false)
+
     const [error, setError] = useState({message:null})
     const [message_status, setMessageStatus] = useState({alertType:null, textMessage:''});
     const usernameRef = useRef();
@@ -58,20 +59,25 @@ function Login () {
     }
     const handleSubmitSend = (login, userData) => {
         const dataSend = {
-            username: userData.userData[0],
+            email: userData.userData[0],
             password: userData.userData[1]
         }
         if(login){
             AxiosController.post('login', dataSend).then(({data}) => {
-                setUser(data.user)
-                setToken(data.token)
+                AlertErrorMs({ status: true }, 'success', 'Access successfull')
+                setTimeout(() => {
+                    setUser(data.user)
+                    setToken(data.token)
+                }, 5000)
             }).catch(error=>{
                 const response = error.response;
                 if(response && response.status == 422){
-                    if(response.data.errors){
-                        AlertErrorMs(true, 'error', response.data.errors)
+                    if(response.data.message){
+                        AlertErrorMs({ status: true }, 'error', response.data.message)
+                        console.log(response.data.message);
                     }else{
-                        
+                        console.log(response.data.message);
+                        AlertErrorMs({ status: true }, 'error', response.data.message)
                     }
                 }
             })

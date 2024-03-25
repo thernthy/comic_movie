@@ -1,10 +1,8 @@
 import axios from "axios";
 const baseURL = process.env.REACT_APP_API_BASE_URL;
-console.log(process.env)
 const AxiosController = axios.create({
     baseURL: `${baseURL}/api`
 });
-
 
 AxiosController.interceptors.request.use((config) => {
     const token = localStorage.getItem('ACCESS_TOKEN');
