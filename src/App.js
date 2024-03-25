@@ -7,8 +7,6 @@ import './css/error.css'
 import { useStateContext } from "./Appcontrollers/ContextProvider"
 function App() {
   const {user, token, setUser, setToken} = useStateContext();
-  console.log(token);
-
   const [selectedLink, setSelectedLink] = useState('/home');
   const [pageTitle, setPageTitle] = useState('모든 만화');
   const [pageActiveAnimation, setPageActiveAnimation] = useState('pageActive');
@@ -19,7 +17,7 @@ function App() {
   return (
     <div className="App">
         <header className='fixed top-0 left-0 w-screen  z-50'>
-          <Navbar onMenuSwich={handleMenuClick} />
+          <Navbar onMenuSwich={handleMenuClick} token={token} user={user} />
         </header>
         <div className='body-wrapper pt-48 bg-slate-300'>
           <Bodycard selectedLink={selectedLink} pageTile={pageTitle} doPageActiveAnime={pageActiveAnimation} onMenuSwich={handleMenuClick}/>

@@ -3,8 +3,10 @@ import '../css/login.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft, faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import AlertContainer from "../components/Error";
-import Buttons from "./Sliderbutton";
+import AlertContainer from "../components/Error";
+// import Buttons from "./Sliderbutton";
 import { useStateContext }  from '../Appcontrollers/ContextProvider';
+import AxiosController from "../Appcontrollers/Axioscontroller";
 
 function Login () {
     const {setUser, setToken} = useStateContext();
@@ -56,9 +58,25 @@ function Login () {
         }
     }
     const handleSubmitSend = (login, userData) => {
+        const dataSend = {
+            username: userData.userData[0],
+            password: userData.userData[1]
+        }
         if(login){
-            setUser(userData.userData[0])
-            setToken(userData.userData[1])
+            AxiosController.post('login', dataSend).then(({data}) => {
+                setUser(data.user)
+                setToken(data.token)
+            }).catch(error=>{
+                const response = error.response;
+                if(response && response.status == 422){
+                    if(response.data.errors){
+                        AlertErrorMs(true, 'error', response.data.errors)
+                    }else{
+                        
+                    }
+                }
+            })
+           
         }else{
             console.log('Sing up')
         };

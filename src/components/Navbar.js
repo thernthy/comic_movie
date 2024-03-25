@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faFilter, faLeaf} from '@fortawesome/free-solid-svg-icons';
 import Menus from '../data/Menu';
 import { Link } from "react-router-dom";
-function Navbar({onMenuSwich}) {
+function Navbar({onMenuSwich, token, user}) {
     const [dragging, setDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const [filterActive, setFilterActive] = useState(true);
@@ -81,11 +81,14 @@ function Navbar({onMenuSwich}) {
     return (
         <div className="menu-wrapper">
             <ul className="p-4 bg-slate-700 h-10 flex flex-row justify-end items-center">
-                <li className="px-2"><Link to={'/login'}>Login</Link></li>
+                {!token?
+                  <li className="px-2"><Link to={'/login'}>Login</Link></li> : ''
+                }
                 <li className="px-2">Join Membership</li>
                 <li className="px-2">Catoon Request</li>
                 <li className="px-2">Announcements</li>
-                <li className="px-2">Logout</li>
+
+                {token? <li className="px-2">Logout</li>:'' }
             </ul>
             <ul className="shadow-md py-5 bg-slate-300 flex flex-row justify-between items-center">
                 <li>
