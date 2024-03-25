@@ -85,7 +85,7 @@ function WarningAlert({textMessage}) {
 const AlertContainer = (message) => {
     const textMessage = message.message.textMessage
     return (
-        <div className="container m-auto  mt-2 xl:w-7/12">
+        <div className="container m-auto  mt-2 left-2/4 xl:w-2/4 fixed top-0 z-50 -translate-x-2/4">
             {message.message.alertType === "success" ?
                 <SuccessAlert textMessage={textMessage} />
                 : message.message.alertType === 'error' ?

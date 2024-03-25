@@ -9,9 +9,8 @@ import Index from "./Layout/Index";
 import Login from "./wigget/Login";
 import Auth from "./Layout/Auth";
 import App from "./App";
-//import Root, { rootLoader } from "./routes/root";
-//import Team, { teamLoader } from "./routes/team";
-
+import Error from "./wigget/Error";
+const message = '404';
 const routers = createBrowserRouter([
   {
     path: "/",
@@ -40,7 +39,7 @@ const routers = createBrowserRouter([
   },
   {
     path:'/*',
-    element:<h1>Not found</h1>
+    element:<Error message={message}/>,
   }
 ]);
 
