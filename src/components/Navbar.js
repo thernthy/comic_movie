@@ -26,7 +26,7 @@ function Navbar({onMenuSwich, token, user}) {
             }
         };
     }, []);
-
+    
     const searBtnHandleBnt = () => {
         if(searBtnHandle == 'sh-btn-inactive'){
            setSearBtnHandle('sh-btn-active')

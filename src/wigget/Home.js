@@ -1,10 +1,14 @@
 import { faDrum } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import cardItemIformation from '../data/Carddata';
+import { handleDetailTitle } from "../router";
+import { useNavigate } from 'react-router-dom';
+
 function Home({viewDetail, doPageActiveAnime, comicData}) {
-    const viewDetailComic = (path, name) => {
-        viewDetail(path, name)
-    }
+    const navigate = useNavigate();
+    const viewDetailComic  = (title) => {
+        navigate(`/detail?ref=${encodeURIComponent(title)}`);
+    };
     useEffect(() => {
         const CardWrapper = document.querySelector('.comic-card-wrapper')
         CardWrapper.classList.add(doPageActiveAnime);
@@ -13,7 +17,7 @@ function Home({viewDetail, doPageActiveAnime, comicData}) {
         <div className="comic-card-wrapper">
                <ul className="comic_items_wrapper grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
                 {comicData.map((Element, index)=>(
-                    <li className="comic_item_card p-3 cursor-pointer" key={index} onClick={()=>viewDetailComic('viewdetail/',Element.comic_name)}>
+                    <li className="comic_item_card p-3 cursor-pointer" key={index} onClick={()=>viewDetailComic(Element.title)}>
                         <div className="post-image">
                         <img
                         src={`https://kotv-001.com/${Element.movei_cover_path}`}

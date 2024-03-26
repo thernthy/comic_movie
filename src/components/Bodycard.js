@@ -27,12 +27,16 @@ function Bodycard({ selectedLink, pageTile, onMenuSwich, comicData, doPageActive
         setComicTitle(comic_name);
         onMenuSwich(path+comic_name, '디테일')
     }
+    
     return(
         <div className=" px-12">
             <h2 className=" text-gray-600 font-bold text-center text-3xl pb-7">{pageTile}</h2>
-            {selectedLink=== '/home' && <Home  viewDetail={handleComicview} comicData={comicData} doPageActiveAnime={doPageActiveAnime} />}
-            {selectedLink=== '/filtur' && <Home  viewDetail={handleComicview}  doPageActiveAnime={doPageActiveAnime}/>}
-            {selectedLink === `viewdetail/${comicTitle}` && <DetialPage comicTitle={comicTitle} doPageActiveAnime={doPageActiveAnime} />}
+            {
+                ((selectedLink=== '/home' && <Home  viewDetail={handleComicview} comicData={comicData} doPageActiveAnime={doPageActiveAnime} />)
+                // (selectedLink=== '/filtur' && <Home  viewDetail={handleComicview}  doPageActiveAnime={doPageActiveAnime}/>)||
+                // (selectedLink === `viewdetail/${comicTitle}` && <DetialPage comicData={comicData} comicTitle={comicTitle} doPageActiveAnime={doPageActiveAnime} />))
+                )
+            }
         </div>
     )
 }
