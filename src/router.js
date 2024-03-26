@@ -13,14 +13,9 @@ import App from "./App";
 import Error from "./wigget/Error";
 import Home from "./wigget/Home";
 import DetialPage from "./wigget/Detailpage";
+import Anouments from "./wigget/Anouments";
+import RequestComic from "./wigget/RequestComic";
 const message = '404';
-let titles = null;
-let datas = [];
-export const handleDetailTitle = (title, data) => {
-  titles = title;
-  datas = data;
-}
-console.log(titles)
 
 const routers = createBrowserRouter([
   {
@@ -35,6 +30,14 @@ const routers = createBrowserRouter([
       {
         path: '/detail',
         element: <DetialPage />,
+      },
+      {
+        path: '/catoon request',
+        element: <RequestComic />,
+      },
+      {
+        path: '/snnouncements',
+        element: <Anouments />,
       },
     ],
   },
