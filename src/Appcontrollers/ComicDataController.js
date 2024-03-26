@@ -1,4 +1,5 @@
 import React from "react";
+import  Oop from "../component/Oop";
 const baseURL = process.env.REACT_APP_API_BASE_URL;
 const fetchComicData = async (requestToken, setLoading, setComicData, filter) => {
     const url = `${baseURL}/api/comic?token=${requestToken}&filter=${filter}`;
@@ -12,6 +13,7 @@ const fetchComicData = async (requestToken, setLoading, setComicData, filter) =>
         setLoading(false)
     } catch (error) {
        console.log(error)
+       <Oop message={error} />
     }
 };
 
