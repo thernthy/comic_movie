@@ -39,7 +39,7 @@ function Index() {
             <header className='fixed top-0 left-0 w-screen  z-50'>
                 <Navbar onMenuSwich={handleSearch} handlefilterBy={handlefilterBy} setSearch={setSearch} token={token} user={user} />
             </header>
-            <main className={`body-wrapper pt-48 ${loading ? 'h-screen' : 'h-fit'} bg-slate-300`} style={{ scrollSnapType: 'x mandatory', overflowX: 'scroll' }}>
+            <main className={`body-wrapper max-h-screen bg-slate-300`} style={{ scrollSnapType: 'x mandatory', overflowX: 'auto' }}>
                 {
                 oopStatus?
                 <Oop message={oopMessage} />

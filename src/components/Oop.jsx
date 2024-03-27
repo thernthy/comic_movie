@@ -6,7 +6,7 @@ const Oop = ({ message }) => {
         <div className="flex flex-col 
             justify-center
             items-center w-5/6 mx-auto
-            h-5/6">
+            h-screen">
             <img src={oopImga} alt="" className=' h-64'/>
             <h1 className=' text-3xl text-red-600 font-semibold'>{message}</h1>
         </div>
