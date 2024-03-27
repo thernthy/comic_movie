@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Bodycard from './components/Bodycard';
 import { useEffect, useState } from 'react';
 import './css/error.css'
-import Home from "./wigget/Home";
+import Home from "./pages/Home";
 import { useStateContext } from "./Appcontrollers/ContextProvider"
 import useFetchComicData from './Appcontrollers/ComicDataController';
 function App() {
@@ -17,7 +17,7 @@ function App() {
   const { fetchComicData, error } = useFetchComicData(); 
   useEffect(() => {
     // Call the fetchComicData function provided by the custom hook
-    fetchComicData(requestToken, setLoading, setComicData, filter);
+    fetchComicData(requestToken, setLoading,  setComicData, 'filter', filter);
   }, [requestToken]);
 
 

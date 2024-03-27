@@ -5,15 +5,20 @@ const baseURL = process.env.REACT_APP_API_BASE_URL;
 const useFetchComicData = () => {
   const { setOopMessage, setOopStatus } = useStateContext();
   const [error, setError] = useState(null);
-  const fetchComicData = async (requestToken, setLoading, setComicData, filter) => {
-    const url = `${baseURL}/api/comic?token=${requestToken}&filter=${filter}`;
+  const fetchComicData = async (requestToken, setLoading, setComicData, requstype, valueofRequest) => {
+    const url = `${baseURL}/api/comic?token=${requestToken}&${requstype}=${valueofRequest}`;
+    console.log(url)
     try {
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      setComicData(data);
+      if(data != ''){
+        setComicData(data);
+      }else{
+        setError('Data not found!')
+      }
       setLoading(false);
     } catch (error) {
       setLoading(false);

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Login from "../wigget/Login";
+import Login from "../pages/Login";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../Appcontrollers/ContextProvider"
 import { Outlet } from "react-router-dom";

@@ -1,10 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faFilter, faLeaf} from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faFilter, faLeaf, faArrowCircleLeft, faClose} from '@fortawesome/free-solid-svg-icons';
+import { useHistory, useLocation, Link, useNavigate } from 'react-router-dom';
 import Logout from "../Appcontrollers/Logout";
 import Menus from '../data/Menu';
-import { Link, useNavigate } from "react-router-dom";
-function Navbar({onMenuSwich, token, user, setSearch}) {
+
+function Navbar({onMenuSwich, handlefilterBy, token, user, setSearch}) {
+
+    
+    const location = useLocation();
+    const isDetailPage = location.pathname.includes('/detail');
+    const currentPath = location.pathname;
+    const [cancelButon, setCancelButton] = useState(false)
     const navigate = useNavigate();
     const [dragging, setDragging] = useState(false);
     const [startX, setStartX] = useState(0);
@@ -65,10 +72,14 @@ function Navbar({onMenuSwich, token, user, setSearch}) {
         navigate(menue_link);
     }
 
+    const handleBack = (e) => {
+          e.preventDefault(); // Prevent default behavior of the event 
+    }
+
     //make active when user click on fileter menu list for each item 
     const handleClickTarget = (filter) => {
         onMenuSwich(filter)
-        console.log(filter)
+        handlefilterBy(filter);
          const filterMenuItems = document.querySelectorAll('.fiter-menu');
          const targetElement = filter.target;
          filterMenuItems.forEach(element => {
@@ -87,9 +98,17 @@ function Navbar({onMenuSwich, token, user, setSearch}) {
         onMenuSwich(searchValue.current.value)
         if(searchValue.current.value!=''){
             setSearch(true)
+            setCancelButton(true)
         }else{
+            setCancelButton(false)
             setSearch(false)
         }
+    }
+
+    const handleCancelInput = () => {
+        searchValue.current.value =''
+        setCancelButton(false)
+        setSearch(false)
     }
 
     return (
@@ -112,7 +131,15 @@ function Navbar({onMenuSwich, token, user, setSearch}) {
                     <ul className="px-4 flex flex-row justify-between items-center">
                         {
                             Menus.menuList.map((Element,index) =>(
-                                <li className="cursor-pointer py-2 px-5" key={index} onClick={()=>handleSwichMenu(Element.path)}>{Element.menu_name}</li>
+                                <li className={`
+                                        cursor-pointer py-2 px-5 
+                                        ${currentPath === Element.path? 'text-red-500': 
+                                            ''
+                                        }`
+                                    } key={index} onClick={()=>handleSwichMenu(Element.path)}
+                                >
+                                    {Element.menu_name}
+                                </li>
                             ))
                         }
                     </ul>
@@ -123,33 +150,52 @@ function Navbar({onMenuSwich, token, user, setSearch}) {
                             <input type="text" placeholder="Please enter comic title" onChange={(e)=> handleSearch() } ref={ searchValue } className={`bg-slate-200 h-max rounded-full pl-3 pr-10 py-1 outline-none`}/>
                         </li>
                         <li className="bg-slate-600 mr-3 p-2 rounded-full z-20">
-                            <button className=" h-6 w-6 flex flex-row items-center justify-center" onClick={searBtnHandleBnt}>
-                                <FontAwesomeIcon icon={faSearch}  className=" text-white font-bold text-2xl"/>
-                            </button>
+                            {!cancelButon?
+                                <button className=" h-6 w-6 flex flex-row items-center justify-center" onClick={searBtnHandleBnt}>
+                                    <FontAwesomeIcon icon={faSearch}  className=" text-white font-bold text-2xl"/>
+                                </button>
+                                :
+                                <button className=" h-6 w-6 flex flex-row items-center justify-center" onClick={handleCancelInput}>
+                                    <FontAwesomeIcon icon={faClose}  className=" text-white font-bold text-2xl"/>
+                                </button>
+                            }
                         </li>
                     </ul>
                 </li>
             </ul>
-            <div className={`filter-wrapper flex flex-row justify-between items-center bg-slate-600 shadow-lg`}>
-                <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-br-148 shadow-md bg-slate-300`}>
-                    {/*<FontAwesomeIcon icon={faFilter} className=" mr-3 text-2xl text-slate-600" onClick={handleActivFilter}/>*/}
-                </div>
+            <div className={`filter-wrapper flex flex-row justify-between items-center ${isDetailPage? '' :  'bg-slate-600 shadow-lg'} `}>
+                    <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-br-148 shadow-md bg-slate-300`}>
+                        {isDetailPage?
+                            <>
+                                <FontAwesomeIcon icon={faArrowCircleLeft}  className=" mr-3 text-2xl text-slate-600" onClick={handleBack}/>
+                            </>
+                            :
+                            ''
+                        }
+                    </div>
                 <div className="flex flex-row justify-start items-center gap-2 w-11/12">
-                    <ul className={`overflow-y-hidden px-6 filter-menue-wrapper overflow-x-auto flex flex-row gap-4  menue_wrapper ${setActivFillter == 'filterOut' ? 'filterOut': 'fileterActive'}`} onMouseMove={handleMouseMove} onMouseDown={handleMouseDown}>
-                            {
-                                Menus.menuFilturList.map((element, index)=>(
-                                    <li className="fiter-menu px-3 py-2 m-2 bg-slate-600 rounded-lg uppercase text-white whitespace-nowrap cursor-pointer"  
-                                        onClick={()=>handleClickTarget(element.spaceficVanlu)} 
-                                        key={index}>
-                                        {element.filturName}
-                                    </li>
-                                ))
-                            }
-                    </ul>
+                    {!isDetailPage?
+                        <ul className={`overflow-y-hidden px-6 filter-menue-wrapper overflow-x-auto flex flex-row gap-4  menue_wrapper ${setActivFillter == 'filterOut' ? 'filterOut': 'fileterActive'}`} onMouseMove={handleMouseMove} onMouseDown={handleMouseDown}>
+                                {
+                                    Menus.menuFilturList.map((element, index)=>(
+                                        <li className="fiter-menu px-3 py-2 m-2 bg-slate-600 rounded-lg uppercase text-white whitespace-nowrap cursor-pointer"  
+                                            onClick={()=>handleClickTarget(element.spaceficVanlu)} 
+                                            key={index}>
+                                            {element.filturName}
+                                        </li>
+                                    ))
+                                }
+                        </ul>
+                    :''
+                    }
                 </div>
-                <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-bl-148 shadow-md bg-slate-300`}>
-                    {/*<FontAwesomeIcon icon={faFilter} className=" mr-3 text-2xl text-slate-600" onClick={handleActivFilter}/>*/}
-                </div>
+                {!isDetailPage?
+
+                    <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-bl-148 shadow-md bg-slate-300`}>
+                        {/*<FontAwesomeIcon icon={faFilter} className=" mr-3 text-2xl text-slate-600" onClick={handleActivFilter}/>*/}
+                    </div>
+                 : ''
+                }
             </div>
         </div>
     )

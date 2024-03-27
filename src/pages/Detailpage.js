@@ -3,8 +3,9 @@ import cardItemIformation from '../data/Carddata';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useParams, useSearchParams } from 'react-router-dom';
 import {faHeart, faCalendar} from '@fortawesome/free-solid-svg-icons';
-import fetchComicData from "../Appcontrollers/ComicDataController";
+import useFetchComicData from '../Appcontrollers/ComicDataController';
 function DetialPage(){
+
     const [requestToken] = useState(process.env.REACT_APP_ACCESS_TOKEN);
     const [searchParams] = useSearchParams();
     const newComicData = searchParams.get('newComicData'); 
@@ -13,9 +14,11 @@ function DetialPage(){
     const [filter, setFilter] = useState(titles);
     const [comicData, setComicData] = useState([]);
     const [currentDate, setCurrentDate] = useState(new Date());
+    const { fetchComicData, error } = useFetchComicData(); 
     useEffect(() => {
         fetchComicData(requestToken, setLoading, setComicData, filter);
     }, [requestToken]); 
+
 
    const filteredComic = comicData.filter(item => item.title);
     if (filteredComic.length === 0) {

@@ -7,14 +7,17 @@ import {
 } from "react-router-dom";
 
 import Index from "./Layout/Index";
-import Login from "./wigget/Login";
+import Login from "./pages/Login";
 import Auth from "./Layout/Auth";
 import App from "./App";
-import Error from "./wigget/Error";
-import Home from "./wigget/Home";
-import DetialPage from "./wigget/Detailpage";
-import Anouments from "./wigget/Anouments";
-import RequestComic from "./wigget/RequestComic";
+import Error from "./pages/Error";
+import Home from "./pages/Home";
+import DetialPage from "./pages/Detailpage";
+import Anouments from "./pages/Anouments";
+import RequestComic from "./pages/RequestComic";
+import Completed from "./pages/complated";
+import Lastes from "./pages/Lates";
+import Popularity from "./pages/Popularity";
 const message = '404';
 
 const routers = createBrowserRouter([
@@ -27,6 +30,23 @@ const routers = createBrowserRouter([
         path: "/",
         element: <App />,
       },
+      {
+        path: "/complate",
+        element: <Completed />,
+      },
+      {
+        path: "/lates",
+        element: <Lastes />,
+      },
+      {
+        path: "/lates",
+        element: <Lastes />,
+      },
+      {
+        path: "/popularity",
+        element: <Popularity />,
+      },
+
       {
         path: '/detail',
         element: <DetialPage />,
