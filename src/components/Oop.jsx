@@ -1,14 +1,14 @@
 import react from 'react'
-
+import oopImga from '../asset/img/oops_4456159.png'
 const Oop = ({ message }) => {
     return (
        <>
-        <div className="flex flex-row 
+        <div className="flex flex-col 
             justify-center
-            items-center 
-            w-screen h-screen">
-            <img src="#oop" alt="oop">
-            <h1>{ message }</h1>
+            items-center w-5/6 mx-auto
+            h-5/6">
+            <img src={oopImga} alt="" className=' h-64'/>
+            <h1 className=' text-3xl text-red-600 font-semibold'>{message}</h1>
         </div>
        </>
     )

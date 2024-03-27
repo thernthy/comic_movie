@@ -1,20 +1,28 @@
 import React from "react";
-import  Oop from "../component/Oop";
+import { useState } from 'react';
+import { useStateContext } from "../Appcontrollers/ContextProvider";
 const baseURL = process.env.REACT_APP_API_BASE_URL;
-const fetchComicData = async (requestToken, setLoading, setComicData, filter) => {
+const useFetchComicData = () => {
+  const { setOopMessage, setOopStatus } = useStateContext();
+  const [error, setError] = useState(null);
+  const fetchComicData = async (requestToken, setLoading, setComicData, filter) => {
     const url = `${baseURL}/api/comic?token=${requestToken}&filter=${filter}`;
     try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setComicData(data);
-        setLoading(false)
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setComicData(data);
+      setLoading(false);
     } catch (error) {
-       console.log(error)
-       <Oop message={error} />
+      setLoading(false);
+      setOopStatus(true);
+      setOopMessage('Something wrong with our server!');
     }
+  };
+  return { fetchComicData, error }; 
 };
 
-export default fetchComicData;
+export default useFetchComicData;
+
