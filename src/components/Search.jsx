@@ -10,7 +10,7 @@ function SearchCom({ comicData, setSearch, loding }) {
         navigate(`/detail${queryString}`);
     };
     return(
-        <div className="comic-card-wrapper h-screen">
+        <div className="comic-card-wrapper pt-48 h-screen">
             {loding? <Loading /> : (
                <ul className="comic_items_wrapper grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
                 {comicData.map((Element, index)=>(
