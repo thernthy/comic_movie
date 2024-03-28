@@ -20,7 +20,7 @@ function Index() {
         oopMessage,
         setOopStatus, 
         setOopMessage
-        } = useStateContext();
+    } = useStateContext();
     const [filter, setFilter] = useState('all');
     const [loading, setLoading] = useState(true);
     const [filterBy, setFilterBy] = useState(false)
