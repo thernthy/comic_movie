@@ -6,15 +6,18 @@ const StateContext = createContext({
   oopStatus:false,
   oopMessage:null,
   notification: null,
+  comicData:[],
   setUser: () => {},
   setToken: () => {},
   setNotification: () => {},
   setOopStatus: () => {},
-  setOopMessage: () => {}
+  setOopMessage: () => {},
+  setComicData: () => {},
 })
 
 export const ContextProvider = ({children}) => {
   const [user, setUser] = useState({});
+  const [comicData, _setComicData] = useState([])
   const [oopStatus, _setoopSatus] = useState(false)
   const [oopMessage, _setOopMessage] = useState(null)
   const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
@@ -36,7 +39,6 @@ export const ContextProvider = ({children}) => {
   }
 
   //set oop status funcotn 
-
   const setOopStatus = (oopStatus) => {
     _setoopSatus(oopStatus);
   }
@@ -44,6 +46,11 @@ export const ContextProvider = ({children}) => {
   const setOopMessage = (message) => {
     _setOopMessage(message)
   }
+  //set new Comic data 
+  const setComicData = (data) => {
+      _setComicData(data)
+  }
+
   return (
     <StateContext.Provider value={{
       user,
@@ -55,7 +62,9 @@ export const ContextProvider = ({children}) => {
       oopStatus,
       oopMessage,
       setOopMessage,
-      setOopStatus
+      setOopStatus,
+      comicData,
+      setComicData,
     }}>
       {children}
     </StateContext.Provider>

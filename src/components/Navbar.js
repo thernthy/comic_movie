@@ -5,7 +5,7 @@ import { useHistory, useLocation, Link, useNavigate } from 'react-router-dom';
 import Logout from "../Appcontrollers/Logout";
 import Menus from '../data/Menu';
 
-function Navbar({onMenuSwich, handlefilterBy, token, user, setSearch}) {
+function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
 
     
     const location = useLocation();
@@ -70,6 +70,7 @@ function Navbar({onMenuSwich, handlefilterBy, token, user, setSearch}) {
     //handle swich base menu 
     const handleSwichMenu = (menue_link) => {
         navigate(menue_link);
+        handlefilterBy(false, null)
     }
 
     const handleBack = (e) => {
@@ -79,7 +80,7 @@ function Navbar({onMenuSwich, handlefilterBy, token, user, setSearch}) {
     //make active when user click on fileter menu list for each item 
     const handleClickTarget = (filter) => {
         onMenuSwich(filter)
-        handlefilterBy(filter);
+        handlefilterBy(true, filter);
          const filterMenuItems = document.querySelectorAll('.fiter-menu');
          const targetElement = filter.target;
          filterMenuItems.forEach(element => {

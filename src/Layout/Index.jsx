@@ -28,16 +28,20 @@ function Index() {
         fetchComicData(requestToken, setLoading, setComicData, 'search', searchValue);
     };
 
-    const  handlefilterBy = (filterByValu) => {
-        setFilterBy(true)
-        setLoading(true)
-        fetchComicData(requestToken, setLoading, setComicData, 'filterBy', filterByValu);
+    const  handlefilterBy = (ture, filterByValu) => {
+        if(ture){
+            setFilterBy(true)
+            setLoading(true)
+            fetchComicData(requestToken, setLoading, setComicData, 'filterBy', filterByValu);
+        }else{
+            setFilterBy(false)
+        }
     }
 
     return(
         <div id='body-wrapper'>
             <header className='fixed top-0 left-0 w-screen  z-50'>
-                <Navbar onMenuSwich={handleSearch} handlefilterBy={handlefilterBy} setSearch={setSearch} token={token} user={user} />
+                <Navbar onMenuSwich={handleSearch}  handlefilterBy={handlefilterBy} setSearch={setSearch} token={token} user={user} />
             </header>
             <main className={`body-wrapper max-h-screen bg-slate-300`} style={{ scrollSnapType: 'x mandatory', overflowX: 'auto' }}>
                 {

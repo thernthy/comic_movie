@@ -13,7 +13,7 @@ function Home({ comicData }) {
     };
     
     return(
-        <div className="comic-card-wrapper">
+        <div className="comic-card-wrapper pt-48">
                <ul className="comic_items_wrapper grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
                 {comicData.map((Element, index)=>(
                     <li className="comic_item_card p-3 cursor-pointer" key={index} onClick={()=>viewDetailComic(Element.title, comicData)}>
