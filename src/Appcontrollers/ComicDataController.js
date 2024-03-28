@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { useStateContext } from "../Appcontrollers/ContextProvider";
 const baseURL = process.env.REACT_APP_API_BASE_URL;
 const useFetchComicData = () => {
-  const { setOopMessage, setOopStatus } = useStateContext();
+  const {setComicData, setOopMessage, setOopStatus } = useStateContext();
   const [error, setError] = useState(null);
+  LadoingData(setComicData)
   const fetchComicData = async (requestToken, setLoading, setComicData, requstype, valueofRequest) => {
     const url = `${baseURL}/api/comic?token=${requestToken}&${requstype}=${valueofRequest}`;
-    console.log(url)
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -26,8 +26,16 @@ const useFetchComicData = () => {
       setOopMessage('Something wrong with our server!');
     }
   };
+ 
   return { fetchComicData, error }; 
 };
 
 export default useFetchComicData;
+
+//This is loading data 
+const LadoingData = (setComicData) => {
+  console.log('hello')
+}
+
+
 

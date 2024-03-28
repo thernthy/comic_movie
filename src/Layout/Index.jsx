@@ -11,7 +11,16 @@ import useFetchComicData from '../Appcontrollers/ComicDataController';
 import FilterByCom from "../components/Filterby";
 
 function Index() {
-    const {user, token, setUser, setToken, oopStatus, oopMessage, setOopStatus, setOopMessage} = useStateContext();
+    const {
+        user, 
+        token, 
+        setUser, 
+        setToken,
+        oopStatus, 
+        oopMessage,
+        setOopStatus, 
+        setOopMessage
+        } = useStateContext();
     const [filter, setFilter] = useState('all');
     const [loading, setLoading] = useState(true);
     const [filterBy, setFilterBy] = useState(false)
@@ -20,11 +29,10 @@ function Index() {
     const [comicData, setComicData] = useState([]);
     //get fetchComic Data funtion from useFetchComicData to make API request 
     const { fetchComicData, error } = useFetchComicData(); 
-
     //hook search typing 
     const handleSearch = (searchValue) => {
         setFilterBy(false)
-        search?setLoading(true):setLoading(false)
+        setLoading(true)
         fetchComicData(requestToken, setLoading, setComicData, 'search', searchValue);
     };
 

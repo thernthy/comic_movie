@@ -112,6 +112,14 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
         setSearch(false)
     }
 
+    //handle request catoon menu 
+    const handlerequestCatoon = (bool) =>{ 
+        bool?
+        navigate('/catoon request')
+        :  alert('Sorry you can not acces this without login');
+        
+    }
+
     return (
         <div className="menu-wrapper">
             <ul className="p-4 bg-slate-700 h-10 flex flex-row justify-end items-center">
@@ -122,7 +130,7 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                     </>
                     : ''
                 }
-                <li className="px-2"><Link to={'/catoon request'}>Catoon Request</Link></li>
+                <li className="px-2 cursor-pointer" onClick={()=>handlerequestCatoon(token? true : false)}>Catoon Request</li>
                 <li className="px-2"><Link to={'/snnouncements'}>Announcements</Link></li>
 
                 {token? <li className="px-2 cursor-pointer" onClick={()=>Logout(token, user)}>Logout</li>:'' }
