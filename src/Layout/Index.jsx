@@ -28,19 +28,19 @@ function Index() {
     const [requestToken] = useState(process.env.REACT_APP_ACCESS_TOKEN);
     const [comicData, setComicData] = useState([]);
     //get fetchComic Data funtion from useFetchComicData to make API request 
-    const { fetchComicData, error } = useFetchComicData(); 
+    //const { fetchComicData, error } = useFetchComicData(); 
     //hook search typing 
     const handleSearch = (searchValue) => {
         setFilterBy(false)
         setLoading(true)
-        fetchComicData(requestToken, setLoading, setComicData, 'search', searchValue);
+       // fetchComicData(requestToken, setLoading, setComicData, 'search', searchValue);
     };
 
     const  handlefilterBy = (ture, filterByValu) => {
         if(ture){
             setFilterBy(true)
             setLoading(true)
-            fetchComicData(requestToken, setLoading, setComicData, 'filterBy', filterByValu);
+            //fetchComicData(requestToken, setLoading, setComicData, 'filterBy', filterByValu);
         }else{
             setFilterBy(false)
         }
@@ -51,7 +51,7 @@ function Index() {
             <header className='fixed top-0 left-0 w-screen  z-50'>
                 <Navbar onMenuSwich={handleSearch}  handlefilterBy={handlefilterBy} setSearch={setSearch} token={token} user={user} />
             </header>
-            <main className={`body-wrapper max-h-screen bg-slate-300`} style={{ scrollSnapType: 'x mandatory', overflowX: 'auto' }}>
+            <main className={`body-wrapper max-h-screen bg-slate-300 pt-48`} style={{ scrollSnapType: 'x mandatory', overflowX: 'auto' }}>
                 {
                 oopStatus?
                 <Oop message={oopMessage} />

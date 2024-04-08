@@ -18,6 +18,7 @@ import RequestComic from "./pages/RequestComic";
 import Completed from "./pages/complated";
 import Lastes from "./pages/Lates";
 import Popularity from "./pages/Popularity";
+import { Path } from "./config/Path";
 const message = '404';
 
 const routers = createBrowserRouter([
@@ -28,7 +29,7 @@ const routers = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <App />,
+        element: <Home />,
       },
       {
         path: "/complate",
@@ -48,8 +49,12 @@ const routers = createBrowserRouter([
       },
 
       {
-        path: '/detail',
+        path: Path.DETAILCOMIC,
         element: <DetialPage />,
+      },
+      {
+        path: Path.READCOMIC,
+        element:<h1>Next</h1>
       },
       {
         path: '/catoon request',

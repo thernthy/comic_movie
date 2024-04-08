@@ -112,6 +112,11 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
         setSearch(false)
     }
 
+    const Logout = (token) => {
+        //localStorage.removeItem('ACCESS_TOKEN')
+        
+    }
+
     //handle request catoon menu 
     const handlerequestCatoon = (bool) =>{ 
         bool?
