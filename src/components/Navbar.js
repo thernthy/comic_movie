@@ -140,7 +140,7 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
 
                 {token? <li className="px-2 cursor-pointer" onClick={()=>Logout(token, user)}>Logout</li>:'' }
             </ul>
-            <ul className="shadow-md py-2 bg-slate-300 flex flex-row justify-between items-center">
+            <ul className="shadow-md py-2 bg-slate-300 flex flex-col md:flex-row justify-between items-center">
                 <li>
                     <ul className="px-4 flex flex-row justify-between items-center">
                         {
@@ -158,10 +158,10 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                         }
                     </ul>
                 </li>
-                <li>
-                    <ul className="flex flex-row items-center overflow-x-hidden">
-                        <li className={`shearbutton bg-slate-600 mr-3 p-1 rounded-full z-10 ${searBtnHandle == 'sh-btn-inactive' ? 'sh-btn-inactive'  : 'sh-btn-active'}`}>
-                            <input type="text" placeholder="Please enter comic title" onChange={(e)=> handleSearch() } ref={ searchValue } className={`bg-slate-200 h-max rounded-full pl-3 pr-10 py-1 outline-none`}/>
+                <li className=" w-full md:w-1/2">
+                    <ul className="flex w-full flex-row items-center justify-center md:justify-end overflow-x-hidden">
+                        <li className={`shearbutton bg-slate-600 mr-3 p-1 w-3/4 sh-btn-active  rounded-full z-10 `}>
+                            <input type="text" placeholder="Please enter comic title" onChange={(e)=> handleSearch() } ref={ searchValue } className={`bg-slate-200 h-max w-full rounded-full pl-3 pr-10 py-1 outline-none`}/>
                         </li>
                         <li className="bg-slate-600 mr-3 p-2 rounded-full z-20">
                             {!cancelButon?
