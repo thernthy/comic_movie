@@ -10,7 +10,7 @@ export const useHookComic = () => {
     // URL = `/comic?page=${page}&token=.thenthy&filter=all`;
     const fetchMovies = async (page) => {
         try {
-            const response = await GetComicAxios.get(`/comic?page=${page}&token=.thenthy&filter=all`, {
+            const response = await GetComicAxios.get(`/comic?page=${page}&token=.thenthy&filter=all&pageRequest=24`, {
                 headers: {
                     'X-API-Key' : process.env.REACT_APP_API_KEY
                 }

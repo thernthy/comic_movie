@@ -40,7 +40,7 @@ function Home() {
     }
 
     return(
-        <div className="comic-card-wrapper md:px-12 lg:px-32">
+        <div className="comic-card-wrapper">
                 { renderMovies() }
                <Pagination 
                     setPage={setPage}

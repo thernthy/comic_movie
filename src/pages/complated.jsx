@@ -1,65 +1,52 @@
 import { faDrum } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
-import { handleDetailTitle } from "../router";
-import { useNavigate } from 'react-router-dom';
-import useFetchComicData from '../Appcontrollers/ComicDataController';
-import DataNotFoundLoading from "../components/Datanotfound";
+import { useHookCompleted } from "../hook/useHookCompleted";
+import FetchingDataError from "../components/fetchingError/Index";
+import ComicCard from "../components/comicCard/Index";
+import Pagination from "../components/pageGinetion";
 
 function Completed() {
-    const [requestToken] = useState(process.env.REACT_APP_ACCESS_TOKEN);
-    const [comicData, setComicData] = useState([]);
-    const [filter, setFilter] = useState('complated');
-    const [loading, setLoading] = useState(true);
+   const {data, isLoading, error, setPage, pageCount, refetch} = useHookCompleted();
+   const renderCompleteComic = () => {
+      if(isLoading) {
+        return(
+            <div className='loding-wrapper fixed top-2/4 left-2/4 -translate-x-2/4 translate-y-2/4'> 
+                    <span className="loader"></span> 
+            </div>
+        )
+      }
 
-    //hook if there any error  while  req 
-    const [reqError, setReqError] = useState({rqErorrSt:false, rqErorrMs: null})
-    //get fetchComic Data funtion from useFetchComicData to make API request 
-    const { fetchComicData, error } = useFetchComicData(); 
+      if(error) {
+        return(
+           <FetchingDataError refetch={refetch} />
+        )
+      }
 
-    const navigate = useNavigate();
-    const viewDetailComic  = (title, newComicData) => {
-        const queryString = `?titles=${encodeURIComponent(title)}`;//&newComicData=${encodeURIComponent(newComicData)}
-        navigate(`/detail${queryString}`);
-    };
-    useEffect(() => {
-        //if any error after req hook new reqError to ture && error sm
-        if(error!=''){
-            setReqError({rqErorrSt:true, rqErorrMs:error})
-        }
-        fetchComicData(requestToken, setLoading, setComicData, 'optional', filter);
-    },[requestToken])
+      return(
+        <ul className="comic_items_wrapper grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
+            { data?.map(movie => (
+                    <ComicCard
+                            key={movie.comic_title_id}
+                            title={movie.title}
+                            poster={movie.photo_cover_path}
+                            id={movie.comic_title_id}
+                            year={movie.created_at}
+                        />
+                        
+                    ))
+            }
+        </ul>
+      )
+   }
+
     return(
         <div className="comic-card-wrapper">
-            {reqError.rqErorrSt?
-                <DataNotFoundLoading message={reqError.rqErorrMs} />
-                : ''
-            }
-               <ul className="comic_items_wrapper grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
-                {comicData.map((Element, index)=>(
-                    <li className="comic_item_card p-3 cursor-pointer" key={index} onClick={()=>viewDetailComic(Element.title, comicData)}>
-                        <div className="post-image">
-                        <img
-                        src={`https://kotv-001.com/${Element.movei_cover_path}`}
-                        title={Element.title}
-                        alt={Element.title} // Provide an alt attribute for accessibility
-                        className="lg:h-60 xl:h-70"
-                        onError={(e) => {
-                            // Handle image load errors
-                            e.target.src = 'https://newtoki330.com/data/file/webtoon/6571f38409fb8_2tPR9J0s_6f158e7fa7b44e71c917830b367a20d641ff9a58.jpg'; // Replace with path to a placeholder image
-                            e.target.onerror = null; // Prevent infinite loop in case placeholder image fails to load
-                        }}
-                        />
-                        </div>
-                        <div className="post_dcr_wrapper">
-                            <p className="text-center py-2 px-2">
-                                {Element.title}
-                            </p>
-                        </div>
-                    </li>
-                ))
-                }
-               </ul>
-            </div>
+            { renderCompleteComic() }
+            <Pagination 
+                setPage={setPage}
+                pageCount={pageCount}
+            />
+        </div>
     )
 }
 
