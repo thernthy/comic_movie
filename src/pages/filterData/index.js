@@ -1,13 +1,19 @@
-import { faDrum } from "@fortawesome/free-solid-svg-icons";
-import React, { useEffect, useState } from "react";
-import { useHookCompleted } from "../hook/useHookCompleted";
-import FetchingDataError from "../components/fetchingError/Index";
-import ComicCard from "../components/comicCard/Index";
-import Pagination from "../components/pageGinetion";
 
-function Completed() {
-   const {data, isLoading, error, setPage, pageCount, refetch} = useHookCompleted();
+import React, { useEffect, useState } from "react";
+import FetchingDataError from "../../components/fetchingError/Index";
+import ComicCard from "../../components/comicCard/Index";
+import Pagination from "../../components/pageGinetion";
+import { useHookFilterData } from "../../hook/useHookFilterData";
+import { DataNotFound } from "../../components/DatanotFound/index";
+
+function FilterData() {
+   const {data, isLoading, error, setPage, pageCount, refetch} = useHookFilterData();
    const renderCompleteComic = () => {
+    if(data?.length === 0){
+        return(
+            <DataNotFound message={"not found data!"} />
+        )
+    }
       if(isLoading) {
         return(
             <div className='loding-wrapper fixed top-2/4 left-2/4 -translate-x-2/4 translate-y-2/4'> 
@@ -50,4 +56,4 @@ function Completed() {
 }
 
 
-export default Completed;
+export default FilterData;

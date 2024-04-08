@@ -19,12 +19,12 @@ yesterday.setDate(currentDate.getDate() - 1);
 
 const Menus = {
     menuFilturList: [
-        { path:'/filtur', filturName: 'This month', spaceficVanlu: currentMonth },
-        { path:'/filtur', filturName: 'Last month', spaceficVanlu: prevMonthName },
-        { path:'/filtur', filturName: 'This Week', spaceficVanlu: thisWeek },
-        { path:'/filtur', filturName: 'Last Week', spaceficVanlu: lastWeek },
-        { path:'/filtur', filturName: 'Today', spaceficVanlu: today },
-        { path:'/filtur', filturName: 'Yeasterday', spaceficVanlu: yesterday.toLocaleDateString() },
+        { path:'/filtur', filturName: 'This month', spaceficVanlu: "this-month" },
+        { path:'/filtur', filturName: 'Last month', spaceficVanlu: "last-month" },
+        { path:'/filtur', filturName: 'This Week', spaceficVanlu: "this-week" },
+        { path:'/filtur', filturName: 'Last Week', spaceficVanlu: "last-Week" },
+        { path:'/filtur', filturName: 'Today', spaceficVanlu: "today" },
+        { path:'/filtur', filturName: 'Yeasterday', spaceficVanlu: "yesterday" },
         { path:'/filtur', filturName: 'New', spaceficVanlu: 'new' },
     ],
     menuList: [

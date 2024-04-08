@@ -19,6 +19,7 @@ import Completed from "./pages/complated";
 import Lastes from "./pages/Lates";
 import Popularity from "./pages/Popularity";
 import { Path } from "./config/Path";
+import FilterData from "./pages/filterData";
 const message = '404';
 
 const routers = createBrowserRouter([
@@ -51,6 +52,10 @@ const routers = createBrowserRouter([
       {
         path: Path.DETAILCOMIC,
         element: <DetialPage />,
+      },
+      {
+        path:Path.FILTERPAGE,
+        element: <FilterData />
       },
       {
         path: Path.READCOMIC,

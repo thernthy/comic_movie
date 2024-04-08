@@ -193,9 +193,9 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                                 {
                                     Menus.menuFilturList.map((element, index)=>(
                                         <li className="fiter-menu px-3 py-2 m-2 bg-slate-600 rounded-lg uppercase text-white whitespace-nowrap cursor-pointer"  
-                                            onClick={()=>handleClickTarget(element.spaceficVanlu)} 
+                                            // onClick={()=>handleClickTarget(element.spaceficVanlu)} 
                                             key={index}>
-                                            {element.filturName}
+                                            <Link to={`/filterBy/${element.spaceficVanlu}`} >{element.filturName}</Link>
                                         </li>
                                     ))
                                 }
