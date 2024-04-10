@@ -4,14 +4,16 @@ import { faSearch, faFilter, faLeaf, faArrowCircleLeft, faClose} from '@fortawes
 import { useHistory, useLocation, Link, useNavigate } from 'react-router-dom';
 import Logout from "../Appcontrollers/Logout";
 import Menus from '../data/Menu';
-
+import Logo from '../asset/img/logo.jpg';
 function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
 
     
     const location = useLocation();
     const isDetailPage = location.pathname.includes('/detail');
+    const isview = location.pathname.includes('/view');
+
     const currentPath = location.pathname;
-    const [cancelButon, setCancelButton] = useState(false)
+    const [cancelButon, setCancelButton] = useState(!isDetailPage && !isview?false:false)
     const navigate = useNavigate();
     const [dragging, setDragging] = useState(false);
     const [startX, setStartX] = useState(0);
@@ -111,10 +113,14 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
         setCancelButton(false)
         setSearch(false)
     }
+    if(isDetailPage && isview){
+        setSearch(false)
+    }
 
     const Logout = (token) => {
-        //localStorage.removeItem('ACCESS_TOKEN')
-        
+        localStorage.removeItem('ACCESS_TOKEN')
+        localStorage.removeItem('PERSONACCESS_IN')
+        window.location.reload()
     }
 
     //handle request catoon menu 
@@ -135,12 +141,15 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                     </>
                     : ''
                 }
-                <li className="px-2 cursor-pointer" onClick={()=>handlerequestCatoon(token? true : false)}>Catoon Request</li>
+                <li className="px-2 cursor-pointer" onClick={()=>handlerequestCatoon(token? true : false)}>Bookmark</li>
                 <li className="px-2"><Link to={'/snnouncements'}>Announcements</Link></li>
 
                 {token? <li className="px-2 cursor-pointer" onClick={()=>Logout(token, user)}>Logout</li>:'' }
             </ul>
-            <ul className="shadow-md py-2 bg-slate-300 flex flex-col md:flex-row justify-between items-center">
+            <ul className="shadow-md py-2 bg-slate-300 flex flex-col md:flex-row justify-start items-center">
+                <li>
+                     <Link to={"/"}><img src={Logo}  alt="Logo" className="h-20 pl-2" /></Link>
+                </li>
                 <li>
                     <ul className="px-4 flex flex-row justify-between items-center">
                         {
@@ -158,24 +167,27 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                         }
                     </ul>
                 </li>
-                <li className=" w-full md:w-1/2">
-                    <ul className="flex w-full flex-row items-center justify-center md:justify-end overflow-x-hidden">
-                        <li className={`shearbutton bg-slate-600 mr-3 p-1 w-3/4 sh-btn-active  rounded-full z-10 `}>
-                            <input type="text" placeholder="Please enter comic title" onChange={(e)=> handleSearch() } ref={ searchValue } className={`bg-slate-200 h-max w-full rounded-full pl-3 pr-10 py-1 outline-none`}/>
-                        </li>
-                        <li className="bg-slate-600 mr-3 p-2 rounded-full z-20">
-                            {!cancelButon?
-                                <button className=" h-6 w-6 flex flex-row items-center justify-center" onClick={searBtnHandleBnt}>
-                                    <FontAwesomeIcon icon={faSearch}  className=" text-white font-bold text-2xl"/>
-                                </button>
-                                :
-                                <button className=" h-6 w-6 flex flex-row items-center justify-center" onClick={handleCancelInput}>
-                                    <FontAwesomeIcon icon={faClose}  className=" text-white font-bold text-2xl"/>
-                                </button>
-                            }
-                        </li>
-                    </ul>
-                </li>
+                {(!isDetailPage && !isview)?
+                    <li className=" w-full md:w-1/2">
+                        <ul className="flex w-full flex-row items-center justify-center md:justify-end overflow-x-hidden">
+                            <li className={`shearbutton bg-slate-600 mr-3 p-1 w-3/4 sh-btn-active  rounded-full z-10 `}>
+                                <input type="text" placeholder="Please enter comic title" onChange={(e)=> handleSearch() } ref={ searchValue } className={`bg-slate-200 h-max w-full rounded-full pl-3 pr-10 py-1 outline-none`}/>
+                            </li>
+                            <li className="bg-slate-600 mr-3 p-2 rounded-full z-20">
+                                {!cancelButon?
+                                    <button className=" h-6 w-6 flex flex-row items-center justify-center" onClick={searBtnHandleBnt}>
+                                        <FontAwesomeIcon icon={faSearch}  className=" text-white font-bold text-2xl"/>
+                                    </button>
+                                    :
+                                    <button className=" h-6 w-6 flex flex-row items-center justify-center" onClick={handleCancelInput}>
+                                        <FontAwesomeIcon icon={faClose}  className=" text-white font-bold text-2xl"/>
+                                    </button>
+                                }
+                            </li>
+                        </ul>
+                    </li>
+                    :''
+                }
             </ul>
             <div className={`filter-wrapper flex flex-row justify-between items-center ${isDetailPage? '' :  'bg-slate-600 shadow-lg'} `}>
                     <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-br-148 shadow-md bg-slate-300`}>
@@ -188,7 +200,7 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                         }
                     </div>
                 <div className="flex flex-row justify-start items-center gap-2 w-11/12">
-                    {!isDetailPage?
+                    {(!isDetailPage && !isview)?
                         <ul className={`overflow-y-hidden px-6 filter-menue-wrapper overflow-x-auto flex flex-row gap-4  menue_wrapper ${setActivFillter == 'filterOut' ? 'filterOut': 'fileterActive'}`} onMouseMove={handleMouseMove} onMouseDown={handleMouseDown}>
                                 {
                                     Menus.menuFilturList.map((element, index)=>(

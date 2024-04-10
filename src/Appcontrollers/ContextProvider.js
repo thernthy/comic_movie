@@ -16,7 +16,7 @@ const StateContext = createContext({
 })
 
 export const ContextProvider = ({children}) => {
-  const [user, setUser] = useState({});
+  const [user, _setUser] = useState(localStorage.getItem("PERSONACCESS_IN"));
   const [comicData, _setComicData] = useState([])
   const [oopStatus, _setoopSatus] = useState(false)
   const [oopMessage, _setOopMessage] = useState(null)
@@ -30,6 +30,16 @@ export const ContextProvider = ({children}) => {
       localStorage.removeItem('ACCESS_TOKEN');
     }
   }
+  
+const setUser = (data) => {
+    _setUser(data)
+    if(data){
+      localStorage.setItem("PERSONACCESS_IN", JSON.stringify(data))
+    }else{
+      localStorage.removeItem("PERSONACCESS_IN");
+    }
+}
+
 
   const setNotification = message => {
     _setNotification(message);

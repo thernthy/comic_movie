@@ -25,7 +25,7 @@ function DetialPage(){
 
         return(
             <ComicDetail 
-              id={data.targetData?.comic_ep_id}
+              id={data.targetData?.comic_title_id}
               created_at={data.targetData?.created_at}
               title={data.targetData?.title}
               paster={data.targetData?.photo_cover_path}

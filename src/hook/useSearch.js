@@ -6,7 +6,7 @@ export const useHookSearch = () => {
     const [page, setPage] = useState(1)
     const [pageCount, setPageCount] = useState();
     const [search, setSearch] = useState("")
-    const fetchSearch = async (search) => {
+    const fetchSearch = async (page, search) => {
         try {
             const response = await GetComicAxios.get(`/comic?page=${page}&token=.thenthy&search=${search}&pageRequest=24`, {
                 headers: {

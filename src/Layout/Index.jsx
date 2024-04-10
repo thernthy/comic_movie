@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import '../App.css';
 import { useEffect, useState } from 'react';
@@ -13,6 +13,7 @@ import { Search } from "../components/Search/index";
 import { useHookSearch } from "../hook/useSearch";
 
 function Index() {
+
     const {
         user, 
         token, 
@@ -24,14 +25,12 @@ function Index() {
         setOopMessage
     } = useStateContext();
     const  {data, isLoading, error, setPage, pageCount, setSearch, search, refetch} = useHookSearch();
-
     const [filter, setFilter] = useState('all');
     const [loading, setLoading] = useState(true);
     const [filterBy, setFilterBy] = useState(false)
     const [searchComponet, setSearchComponent] = useState(false)
     const [requestToken] = useState(process.env.REACT_APP_ACCESS_TOKEN);
     const [comicData, setComicData] = useState([]);
-
     const handleSearch = (searchValue) => {
         setFilterBy(false)
         setSearch(searchValue);
@@ -40,7 +39,6 @@ function Index() {
     const  handlefilterBy = (ture, filterByValu) => {
         if(ture){
             setFilterBy(true)
-            //fetchComicData(requestToken, setLoading, setComicData, 'filterBy', filterByValu);
         }else{
             setFilterBy(false)
         }

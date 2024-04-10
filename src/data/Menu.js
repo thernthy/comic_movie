@@ -22,7 +22,7 @@ const Menus = {
         { path:'/filtur', filturName: 'This month', spaceficVanlu: "this-month" },
         { path:'/filtur', filturName: 'Last month', spaceficVanlu: "last-month" },
         { path:'/filtur', filturName: 'This Week', spaceficVanlu: "this-week" },
-        { path:'/filtur', filturName: 'Last Week', spaceficVanlu: "last-Week" },
+        { path:'/filtur', filturName: 'Last Week', spaceficVanlu: "last-week" },
         { path:'/filtur', filturName: 'Today', spaceficVanlu: "today" },
         { path:'/filtur', filturName: 'Yeasterday', spaceficVanlu: "yesterday" },
         { path:'/filtur', filturName: 'New', spaceficVanlu: 'new' },
