@@ -4,7 +4,7 @@ const ComicCard = ({ id, title, poster, year}) => {
 
     return(
             <Link to={`/detail/${id}/${title}`}>
-                        <li className="comic_item_card p-3 cursor-pointer">{/*key={index} onClick={()=>viewDetailComic(Element.title, comicData)} */}
+                        <li className="comic_item_card p-3 cursor-pointer text-white">{/*key={index} onClick={()=>viewDetailComic(Element.title, comicData)} */}
                             <div className="post-image">
                             <img
                             src={`https://kotv-001.com/${poster}`}
@@ -25,7 +25,6 @@ const ComicCard = ({ id, title, poster, year}) => {
                             </div>
                         </li>
             </Link>
-        
     );
 }
 

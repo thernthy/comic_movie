@@ -6,8 +6,6 @@ import Logout from "../Appcontrollers/Logout";
 import Menus from '../data/Menu';
 import Logo from '../asset/img/logo.jpg';
 function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
-
-    
     const location = useLocation();
     const isDetailPage = location.pathname.includes('/detail');
     const isview = location.pathname.includes('/view');
@@ -133,7 +131,7 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
 
     return (
         <div className="menu-wrapper">
-            <ul className="p-4 bg-slate-700 h-10 flex flex-row justify-end items-center">
+            <ul className="p-4 bg-slate-700 bg-lime-400 h-10 flex flex-row justify-end items-center">
                 {!token?
                     <>
                         <li className="px-2"><Link to={'/login'}>Login</Link></li>
@@ -142,11 +140,12 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                     : ''
                 }
                 <li className="px-2 cursor-pointer" onClick={()=>handlerequestCatoon(token? true : false)}>Bookmark</li>
-                <li className="px-2"><Link to={'/snnouncements'}>Announcements</Link></li>
+                {/* <li className="px-2"><Link to={'/snnouncements'}>Announcements</Link></li> */}
 
                 {token? <li className="px-2 cursor-pointer" onClick={()=>Logout(token, user)}>Logout</li>:'' }
             </ul>
-            <ul className="shadow-md py-2 bg-slate-300 flex flex-col md:flex-row justify-start items-center">
+            {/* this defual background color bg-slate-300 */}
+            <ul className="shadow-md py-2 bg-black flex flex-col md:flex-row justify-start items-center">
                 <li>
                      <Link to={"/"}><img src={Logo}  alt="Logo" className="h-20 pl-2" /></Link>
                 </li>
@@ -155,9 +154,9 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                         {
                             Menus.menuList.map((Element,index) =>(
                                 <li className={`
-                                        cursor-pointer py-2 px-5 
+                                        cursor-pointer py-2 px-5 font-bold text-1xl 
                                         ${currentPath === Element.path? 'text-red-500': 
-                                            ''
+                                            'text-white'
                                         }`
                                     } key={index} onClick={()=>handleSwichMenu(Element.path)}
                                 >
@@ -170,10 +169,11 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                 {(!isDetailPage && !isview)?
                     <li className=" w-full md:w-1/2">
                         <ul className="flex w-full flex-row items-center justify-center md:justify-end overflow-x-hidden">
-                            <li className={`shearbutton bg-slate-600 mr-3 p-1 w-3/4 sh-btn-active  rounded-full z-10 `}>
-                                <input type="text" placeholder="Please enter comic title" onChange={(e)=> handleSearch() } ref={ searchValue } className={`bg-slate-200 h-max w-full rounded-full pl-3 pr-10 py-1 outline-none`}/>
+                            {/* custom by using class sh-btn-active */}
+                            <li className={`shearbutton bg-lime-300 mr-3 p-1 w-3/4   rounded-full z-10 `}>
+                                <input type="text" placeholder="만화 제목을 입력하세요" onChange={(e)=> handleSearch() } ref={ searchValue } className={`bg-white h-max w-full rounded-full pl-3 pr-10 py-1 outline-none`}/>
                             </li>
-                            <li className="bg-slate-600 mr-3 p-2 rounded-full z-20">
+                            <li className="bg-lime-300 mr-3 p-2 rounded-full z-20">
                                 {!cancelButon?
                                     <button className=" h-6 w-6 flex flex-row items-center justify-center" onClick={searBtnHandleBnt}>
                                         <FontAwesomeIcon icon={faSearch}  className=" text-white font-bold text-2xl"/>
@@ -189,11 +189,11 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                     :''
                 }
             </ul>
-            <div className={`filter-wrapper flex flex-row justify-between items-center ${isDetailPage? '' :  'bg-slate-600 shadow-lg'} `}>
-                    <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-br-148 shadow-md bg-slate-300`}>
+            <div className={`filter-wrapper flex flex-row justify-between items-center ${isDetailPage || isview? '' :  'bg-lime-500 shadow-lg'} `}>
+                    <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-br-148 shadow-md `}>
                         {isDetailPage?
                             <>
-                                <FontAwesomeIcon icon={faArrowCircleLeft}  className=" mr-3 text-2xl text-slate-600" onClick={handleBack}/>
+                                <Link to={"/"}><FontAwesomeIcon icon={faArrowCircleLeft}  className=" mr-3 text-2xl text-slate-600" /></Link>
                             </>
                             :
                             ''
@@ -204,7 +204,7 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                         <ul className={`overflow-y-hidden px-6 filter-menue-wrapper overflow-x-auto flex flex-row gap-4  menue_wrapper ${setActivFillter == 'filterOut' ? 'filterOut': 'fileterActive'}`} onMouseMove={handleMouseMove} onMouseDown={handleMouseDown}>
                                 {
                                     Menus.menuFilturList.map((element, index)=>(
-                                        <li className="fiter-menu px-3 py-2 m-2 bg-slate-600 rounded-lg uppercase text-white whitespace-nowrap cursor-pointer"  
+                                        <li className="fiter-menu px-3 py-2 m-2 rounded-lg uppercase text-white whitespace-nowrap cursor-pointer"  
                                             // onClick={()=>handleClickTarget(element.spaceficVanlu)} 
                                             key={index}>
                                             <Link to={`/filterBy/${element.spaceficVanlu}`} >{element.filturName}</Link>
@@ -217,7 +217,7 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                 </div>
                 {!isDetailPage?
 
-                    <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-bl-148 shadow-md bg-slate-300`}>
+                    <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-bl-148 shadow-md`}>
                         {/*<FontAwesomeIcon icon={faFilter} className=" mr-3 text-2xl text-slate-600" onClick={handleActivFilter}/>*/}
                     </div>
                  : ''

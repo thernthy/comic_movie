@@ -13,16 +13,19 @@ export const ComicDetail = ({id, title, paster, description, created_at, curretP
         user, 
         token, 
     } = useStateContext();
-
+    
     const [saved, setSaved] = useState(false)
     const poserPath  = `https://kotv-001.com/${paster}`;
-    const currentUser =  JSON.parse(user)?JSON.parse(user):null;
+    const currentUser =  user?JSON.parse(user):null;
 
     useEffect(()=> {
         handleAddBookMark("check", currentUser?.id, id)
     }, [])
 
     const handleAddBookMark = (action, person_id, id) => {
+        if(!person_id && action !=='check'){
+            return alert("Sorry this function allow only login!")
+        }
         if(person_id && !saved){
             SaveBookmark(action, person_id, id)
         }
@@ -70,7 +73,7 @@ export const ComicDetail = ({id, title, paster, description, created_at, curretP
                             outline-none 
                             px-3 
                             py-2 
-                            ${saved?'bg-emerald-600' : 'bg-lime-600'} 
+                            ${saved?'bg-emerald-600' : 'bg-lime-500'} 
                             rounded-xl 
                             mx-2 
                             whitespace-normal 
@@ -81,7 +84,26 @@ export const ComicDetail = ({id, title, paster, description, created_at, curretP
                             <FontAwesomeIcon icon={faHeart}  className=" shadow-md p-3 rounded-full mr-3 text-red-50"/><span>Bookmark</span>
                     </button>
                     {/* <button  className="flex flex-row justify-between items-center outline-none px-3 py-2 bg-red-400 rounded-xl  mx-2 whitespace-normal font-semibold"><FontAwesomeIcon icon={faHeart}   className=" shadow-md p-3 rounded-full mr-3 text-red-50"/><span>Favorite</span></button> */}
-                    <button  className="flex flex-row justify-between items-center outline-none px-3 py-2 bg-slate-600 rounded-xl  mx-2 whitespace-normal font-semibold"><Link to={`/view/${id}/${ComicPart.length}/${title}/${curretPart}`}><FontAwesomeIcon icon={faHeart} className=" shadow-md p-3 rounded-full mr-3 text-red-50" /><span>Read</span></Link></button>
+                    <button  className="
+                        flex 
+                        flex-row 
+                        justify-between 
+                        items-center 
+                        outline-none 
+                        px-3 py-2 
+                        bg-slate-600 
+                        rounded-xl  
+                        
+                        mx-2 
+                        whitespace-normal 
+                        font-semibold
+                        "><Link to={`/view/${id}/${ComicPart.length}/${title}/${curretPart}`} className='                        
+                            flex 
+                            flex-row 
+                            justify-between 
+                            flex-nowrap
+                            items-center 
+                        '><FontAwesomeIcon icon={faHeart} className=" shadow-md p-3 rounded-full mr-3 text-red-50" /><span>Read</span></Link></button>
                 </div>
             </div>
         </div>

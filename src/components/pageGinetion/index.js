@@ -20,7 +20,7 @@ const Pagination = ({ setPage, pageCount }) => {
                 marginPagesDisplayed={3}
                 pageRangeDisplayed={3}
                 onPageChange={handleClick}
-                containerClassName={"pagination justify-content-center flex-wrap shadow-md py-2 px-3 rounded-md"}
+                containerClassName={"pagination justify-content-center flex-wrap shadow-sm shadow-lime-500 py-2 px-3 rounded-md"}
                 pageClassName={"page-item numberPage px-1 mx-2"}
                 pageLinkClassName={"page-link text-lg"}
                 previousClassName={"page-item pr"}

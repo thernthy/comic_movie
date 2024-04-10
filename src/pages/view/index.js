@@ -43,7 +43,7 @@ const Readcomic = () => {
 
     return (
         <div className="min-vh-100">
-            <div className="container">
+            <div className="container mr-auto ml-auto">
                 <div className="row">
                     {renderReading()}
                 </div>

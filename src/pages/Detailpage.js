@@ -37,7 +37,7 @@ function DetialPage(){
     }
 
     return (
-        <div  className={`detail_wrapper lg:px-14 ${isLoading? 'h-screen' : 'h-fit'} bg-slate-300`}>
+        <div  className={`detail_wrapper lg:px-14 py-3 rounded-md ${isLoading? 'h-screen' : 'h-fit'} text-white`}>
             { renderDetailComic() }
         </div>
       )

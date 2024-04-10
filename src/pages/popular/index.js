@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import FetchingDataError from "../../components/fetchingError/Index";
 import ComicCard from "../../components/comicCard/Index";
 import Pagination from "../../components/pageGinetion";
-import { useHookLates } from "../../hook/useHookLates";
+import { useHookPopular } from "../../hook/useHookPopular";
 
-function Lates() {
-   const {data, isLoading, error, setPage, pageCount, refetch} = useHookLates();
+function Popular() {
+   const {data, isLoading, error, setPage, pageCount, refetch} = useHookPopular();
    const renderCompleteComic = () => {
       if(isLoading) {
         return(
@@ -50,4 +50,4 @@ function Lates() {
 }
 
 
-export default Lates;
+export default Popular;

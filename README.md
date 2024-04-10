@@ -77,3 +77,12 @@ npm i react-router-dom
 
 Make request using axios 
 npm install axios
+
+color bran  => {
+    bg: bg-lime-500,
+    color: [
+        bg-red-400,
+        bg-red-50
+    ],
+
+}

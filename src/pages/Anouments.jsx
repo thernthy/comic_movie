@@ -1,9 +1,11 @@
-import React  from "react";
+import { data } from "autoprefixer";
+import React, { useEffect, useState }  from "react";
 
 const Anouments = () => {
+   
     return (
         <>
-            <div className="mt-48 px-2 relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div className="py-3  px-2 relative overflow-x-auto shadow-md sm:rounded-lg">
                 <h1 className="text-center pb-4 text-4xl text-neutral-700">공지사항</h1>
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">

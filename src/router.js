@@ -5,7 +5,6 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-
 import Index from "./Layout/Index";
 import Login from "./pages/Login";
 import Auth from "./Layout/Auth";
@@ -14,13 +13,13 @@ import Error from "./pages/Error";
 import Home from "./pages/Home";
 import DetialPage from "./pages/Detailpage";
 import Anouments from "./pages/Anouments";
-import RequestComic from "./pages/RequestComic";
 import Completed from "./pages/complated";
-import Lastes from "./pages/Lates";
-import Popularity from "./pages/Popularity";
 import { Path } from "./config/Path";
 import FilterData from "./pages/filterData";
 import Readcomic from "./pages/view";
+import Lates from "./pages/letes/index"
+import Popular from "./pages/popular/index";
+import { Bookmakr } from "./pages/bookmark/index";
 const message = '404';
 
 const routers = createBrowserRouter([
@@ -39,15 +38,11 @@ const routers = createBrowserRouter([
       },
       {
         path: "/lates",
-        element: <Lastes />,
-      },
-      {
-        path: "/lates",
-        element: <Lastes />,
+        element: <Lates />,
       },
       {
         path: "/popularity",
-        element: <Popularity />,
+        element: <Popular />,
       },
 
       {
@@ -64,7 +59,7 @@ const routers = createBrowserRouter([
       },
       {
         path: '/catoon request',
-        element: <RequestComic />,
+        element: <Bookmakr />,
       },
       {
         path: '/snnouncements',

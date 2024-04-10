@@ -1,3 +1,7 @@
+body{
+    background-color: black;
+}
+
 #pagination ul.pagination{
     display: flex;
     flex-direction: row;

@@ -66,7 +66,7 @@ const Viewcomic = ({
                 justifyContent:"space-between",
                 alignItems:"center"
                 }}>
-                <span className="h3 text-success shadow-sm py-2 px-2 rounded-pill">
+                {/* <span className="h3 text-success shadow-sm py-2 px-2 rounded-pill">
                     <Link to={`/view/${id}/${maxPart}/${title}/${priviewtPart}`} onClick={handlePriview()}>
                         <FontAwesomeIcon icon={faArrowAltCircleLeft} />
                     </Link>
@@ -75,7 +75,7 @@ const Viewcomic = ({
                     <Link  to={`/view/${id}/${maxPart}/${title}/${updatedComicEp}`} onClick={handleNext()}>
                         <FontAwesomeIcon icon={faArrowAltCircleRight} />
                     </Link>
-                </span>
+                </span> */}
             </div>
             {comicBooks?.map((item, index) => (
                 <img
