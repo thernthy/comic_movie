@@ -131,11 +131,11 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
 
     return (
         <div className="menu-wrapper">
-            <ul className="p-4 bg-slate-700 bg-lime-400 h-10 flex flex-row justify-end items-center">
+            <ul className="p-4  bg-lime-400 h-10 flex flex-row justify-end items-center">
                 {!token?
                     <>
-                        <li className="px-2"><Link to={'/login'}>Login</Link></li>
-                        <li className="px-2"><Link to={'/login'}>Join Membership</Link></li>
+                        <li className="px-2"><Link to={'/login'} className=" underline underline-offset-8">Login</Link></li>
+                        <li className="px-2"><Link to={'/login'} className=" underline underline-offset-8">Join Membership</Link></li>
                     </>
                     : ''
                 }
@@ -216,7 +216,6 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                     }
                 </div>
                 {!isDetailPage?
-
                     <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-bl-148 shadow-md`}>
                         {/*<FontAwesomeIcon icon={faFilter} className=" mr-3 text-2xl text-slate-600" onClick={handleActivFilter}/>*/}
                     </div>

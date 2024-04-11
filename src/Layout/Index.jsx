@@ -11,6 +11,7 @@ import useFetchComicData from '../Appcontrollers/ComicDataController';
 import FilterByCom from "../components/Filterby";
 import { Search } from "../components/Search/index";
 import { useHookSearch } from "../hook/useSearch";
+import Footer from "../components/foodter";
 
 function Index() {
 
@@ -75,6 +76,7 @@ function Index() {
                 }
                 
             </main>
+            <Footer />
         </div>
     );
 }

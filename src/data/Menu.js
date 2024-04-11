@@ -19,19 +19,19 @@ yesterday.setDate(currentDate.getDate() - 1);
 
 const Menus = {
     menuFilturList: [
-        { path:'/filtur', filturName: 'This month', spaceficVanlu: "this-month" },
-        { path:'/filtur', filturName: 'Last month', spaceficVanlu: "last-month" },
-        { path:'/filtur', filturName: 'This Week', spaceficVanlu: "this-week" },
-        { path:'/filtur', filturName: 'Last Week', spaceficVanlu: "last-week" },
-        { path:'/filtur', filturName: 'Today', spaceficVanlu: "today" },
-        { path:'/filtur', filturName: 'Yeasterday', spaceficVanlu: "yesterday" },
-        { path:'/filtur', filturName: 'New', spaceficVanlu: 'new' },
+        { path:'/filtur', filturName: '이번 달', spaceficVanlu: "this-month" },
+        { path:'/filtur', filturName: '지난 달', spaceficVanlu: "last-month" },
+        { path:'/filtur', filturName: '이번 주', spaceficVanlu: "this-week" },
+        { path:'/filtur', filturName: '지난주', spaceficVanlu: "last-week" },
+        { path:'/filtur', filturName: '오늘', spaceficVanlu: "today" },
+        { path:'/filtur', filturName: '어제', spaceficVanlu: "yesterday" },
+        { path:'/filtur', filturName: '새로운', spaceficVanlu: 'new' },
     ],
     menuList: [
-        { path:'/', menu_name: 'Home', specific_name: '모든 만화', other:''},
-        { path:'/complate', menu_name: 'Complate', specific_name: '컴플리트', other:''},
-        { path:'/lates', menu_name: 'Lates', specific_name: '지각', other:''},
-        { path:'/popularity', menu_name: 'Popularity', specific_name: '인기', other:''},
+        { path:'/', menu_name: '집', specific_name: '모든 만화', other:''},
+        { path:'/complate', menu_name: '완전한', specific_name: '컴플리트', other:''},
+        { path:'/lates', menu_name: '지각', specific_name: '지각', other:''},
+        { path:'/popularity', menu_name: '인기', specific_name: '인기', other:''},
     ]
 }
 

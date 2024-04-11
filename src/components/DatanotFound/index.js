@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export const DataNotFound = ({message}) => {
     return (
-        <div className=" flex flex-col justify-center items-center py-4">
+        <div className=" flex flex-col justify-center items-center sm:py-1 md:py-4">
             <lord-icon
                 src="https://cdn.lordicon.com/xumlwjxf.json"
                 trigger="loop"
@@ -15,7 +15,7 @@ export const DataNotFound = ({message}) => {
                 colors="primary:#e83a30,secondary:#e83a30,tertiary:#faddd1"
                 style={{width:"250px",height:"250px"}}>
             </lord-icon>
-            <h1 className="text-5xl uppercase  text-red-500 font-extrabold py-5">{message}</h1>
+            <h1 className="text-5xl uppercase  text-red-500 font-extrabold py-5 text-center">{message}</h1>
             <h1 className="text-8xl uppercase  text-red-500 font-extrabold py-5">404</h1>
             <button className="border border-solid border-spacing-2 px-2 py-4 rounded-md border-white">
                 <span>
