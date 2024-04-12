@@ -1,6 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const ComicCard = ({ id, title, poster, year}) => {
+const ComicCard = ({ id, title, poster }) => {
 
     return(
             <Link to={`/detail/${id}/${title}`}>

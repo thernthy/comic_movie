@@ -17,7 +17,6 @@ export const useHookFilterData = () => {
                 }
             });
             setPageCount(response.data.last_page)
-            console.log(response)
            return response.data.data
           } catch (error) {
             // Handle errors here

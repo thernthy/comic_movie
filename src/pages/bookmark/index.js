@@ -8,12 +8,11 @@ export const Bookmakr = () =>{
     const navigate = useNavigate()
     const {
         user, 
-        token, 
     } = useStateContext();
     const [bookMakrData, setBookMarkData] = useState([]);
     const currentUser =  user?JSON.parse(user):null;
 
-    useEffect(()=> {
+    useEffect(() => {
         if(!user){
             navigate('/')
         }

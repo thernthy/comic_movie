@@ -1,13 +1,11 @@
 import React from "react";
-import { Navigate, Outlet} from "react-router-dom";
+import { Outlet} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import '../App.css';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import '../css/error.css'
 import { useStateContext } from "../Appcontrollers/ContextProvider"
 import Oop from '../components/Oop';
-import SearchCom from "../components/Search";
-import useFetchComicData from '../Appcontrollers/ComicDataController';
 import FilterByCom from "../components/Filterby";
 import { Search } from "../components/Search/index";
 import { useHookSearch } from "../hook/useSearch";

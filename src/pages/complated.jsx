@@ -1,5 +1,5 @@
-import { faDrum } from "@fortawesome/free-solid-svg-icons";
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 import { useHookCompleted } from "../hook/useHookCompleted";
 import FetchingDataError from "../components/fetchingError/Index";
 import ComicCard from "../components/comicCard/Index";

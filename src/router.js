@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   createBrowserRouter,
   Navigate,
-  RouterProvider,
 } from "react-router-dom";
+
 import Index from "./Layout/Index";
 import Login from "./pages/Login";
 import Auth from "./Layout/Auth";
-import App from "./App";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import DetialPage from "./pages/Detailpage";

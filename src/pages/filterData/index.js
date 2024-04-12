@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React  from "react";
 import FetchingDataError from "../../components/fetchingError/Index";
 import ComicCard from "../../components/comicCard/Index";
 import Pagination from "../../components/pageGinetion";

@@ -1,3 +1,5 @@
+// this custom date format for runing to the filter menu future
+/*
 const currentDate = new Date();
 const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
 
@@ -15,7 +17,7 @@ const lastWeek = `${lastWeekStart.toLocaleDateString()} - ${lastWeekEnd.toLocale
 const today = currentDate.toLocaleDateString();
 const yesterday = new Date(currentDate);
 yesterday.setDate(currentDate.getDate() - 1);
-
+*/
 
 const Menus = {
     menuFilturList: [

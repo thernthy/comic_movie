@@ -1,9 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { GetComicAxios } from "../Appcontrollers/comicXciosClient";
-import { useState } from "react";
-import { faCommentsDollar } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
-
 
 export const UseGetDetailComic = () => {
     const { id } =  useParams()

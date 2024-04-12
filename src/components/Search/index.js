@@ -3,7 +3,6 @@ import FetchingDataError from "../fetchingError/Index";
 
 import ComicCard from "../comicCard/Index";
 import Pagination from "../pageGinetion";
-import { height, width } from "@fortawesome/free-solid-svg-icons/fa0";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";

@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { useStateContext } from '../../Appcontrollers/ContextProvider';
 import { GetComicAxios } from '../../Appcontrollers/comicXciosClient';
 import { useEffect, useState } from 'react';
-import { act } from 'react-dom/test-utils';
 
 export const ComicDetail = ({id, title, paster, description, created_at, curretPart, ComicPart}) => {
     const {

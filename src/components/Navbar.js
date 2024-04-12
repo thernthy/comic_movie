@@ -1,15 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faFilter, faLeaf, faArrowCircleLeft, faClose} from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faArrowCircleLeft, faClose} from '@fortawesome/free-solid-svg-icons';
 import { useHistory, useLocation, Link, useNavigate } from 'react-router-dom';
-import Logout from "../Appcontrollers/Logout";
 import Menus from '../data/Menu';
 import Logo from '../asset/img/logo.jpg';
 function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
     const location = useLocation();
     const isDetailPage = location.pathname.includes('/detail');
     const isview = location.pathname.includes('/view');
-
     const currentPath = location.pathname;
     const [cancelButon, setCancelButton] = useState(!isDetailPage && !isview?false:false)
     const navigate = useNavigate();
@@ -20,6 +18,8 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
     const [setActivFillter, setFilterActivClass] = useState('filterOut')
     const searchValue = useRef(null);
     const [filemenuActive, setFiltermenuActive] = useState('');
+
+
     useEffect(() => {
         const menueWrapper = document.querySelector('.menue_wrapper');
         if (menueWrapper) {
