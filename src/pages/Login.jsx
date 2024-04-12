@@ -5,7 +5,6 @@ import { faArrowAltCircleLeft, faArrowAltCircleRight } from "@fortawesome/free-s
 import AlertContainer from "../components/Error";
 import { useStateContext }  from '../Appcontrollers/ContextProvider';
 import { AuthAxiosApi } from "../Appcontrollers/comicXciosClient";
-import { data } from "autoprefixer";
 
 function Login () {
     const {setUser, setToken} = useStateContext();
@@ -65,11 +64,11 @@ function Login () {
                     'X-API-Key' : process.env.REACT_APP_API_KEY
                 }
             }).then(({data}) => {
-                console.log(data)
                 AlertErrorMs({ status: true }, 'success', 'Access successfull')
                 setTimeout(() => {
                     setUser(data.user)
                     setToken(data.token)
+                    window.location.reload()
                 }, 100)
             }).catch(error=>{
                 const response = error.response;

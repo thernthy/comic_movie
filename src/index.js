@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
 import routers from './router';
 import { ContextProvider } from './Appcontrollers/ContextProvider';
+import GenresProvider from './Appcontrollers/useHookGenre';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
 
@@ -13,7 +14,9 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ContextProvider>
-        <RouterProvider router={routers} />
+        <GenresProvider>
+          <RouterProvider router={routers} />
+        </GenresProvider>
       </ContextProvider>
     </QueryClientProvider>
   </React.StrictMode>

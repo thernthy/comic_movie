@@ -15,9 +15,9 @@ export const ComicDetail = ({id, title, paster, description, created_at, curretP
     
     const [saved, setSaved] = useState(false)
     const poserPath  = `https://kotv-001.com/${paster}`;
-    const currentUser =  user?JSON.parse(user):null;
-
+    let currentUser;
     useEffect(()=> {
+         currentUser =  user?JSON.parse(user, true):null;
         handleAddBookMark("check", currentUser?.id, id)
     }, [])
 

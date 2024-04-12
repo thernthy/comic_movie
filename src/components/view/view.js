@@ -36,9 +36,9 @@ const Viewcomic = ({
         // This depends on how your component is structured and how you're rendering the images
       };
     // const src = poster.startsWith('images/') ? `https://www.kotv-001.com/${poster}` : poster;
-    const comicBooks = JSON.parse(comic_img_path, true);
+    const comicBooks = JSON.parse(comic_img_path, true)
     const updatedComicEp = comic_ep < maxPart ? comic_ep + 1 : comic_ep;
-    const priviewtPart = comic_ep > 0 ? comic_ep - 1 : comic_ep;
+    const priviewtPart = comic_ep > 1 ? comic_ep - 1 : comic_ep;
     const handlePriview = () => {
         isLoading()
     }

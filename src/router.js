@@ -19,6 +19,8 @@ import Readcomic from "./pages/view";
 import Lates from "./pages/letes/index"
 import Popular from "./pages/popular/index";
 import { Bookmakr } from "./pages/bookmark/index";
+import  {PageNotFound }  from "./pages/404/index";
+import Genrepage from "./pages/Genre/index";
 const message = '404';
 
 const routers = createBrowserRouter([
@@ -43,6 +45,10 @@ const routers = createBrowserRouter([
         path: "/popularity",
         element: <Popular />,
       },
+      {
+        path: Path.GENREFILTER,
+        element: <Genrepage />,
+      },
 
       {
         path: Path.DETAILCOMIC,
@@ -64,6 +70,7 @@ const routers = createBrowserRouter([
         path: '/snnouncements',
         element: <Anouments />,
       },
+
     ],
   },
   {
@@ -82,7 +89,7 @@ const routers = createBrowserRouter([
   },
   {
     path:'/*',
-    element:<Error message={message}/>,
+    element:<PageNotFound message={message}/>,
   }
 ]);
 

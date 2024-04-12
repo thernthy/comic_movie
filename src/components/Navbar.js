@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faArrowCircleLeft, faClose} from '@fortawesome/free-solid-svg-icons';
 import { useHistory, useLocation, Link, useNavigate } from 'react-router-dom';
 import Menus from '../data/Menu';
 import Logo from '../asset/img/logo.jpg';
+import { Genre } from "./render _catecory";
+import { genresContext } from "../Appcontrollers/useHookGenre";
 function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
     const location = useLocation();
     const isDetailPage = location.pathname.includes('/detail');
@@ -17,8 +20,10 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
     const [searBtnHandle, setSearBtnHandle] = useState('sh-btn-inactive');
     const [setActivFillter, setFilterActivClass] = useState('filterOut')
     const searchValue = useRef(null);
+    const [HandleDropdown, setHandleDropDown] = useState(false)
     const [filemenuActive, setFiltermenuActive] = useState('');
 
+    const { data } = useContext(genresContext)
 
     useEffect(() => {
         const menueWrapper = document.querySelector('.menue_wrapper');
@@ -36,6 +41,10 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
         };
     }, []);
     
+   const handleDispayDropdow = (status) => {
+     setHandleDropDown(status)
+   }
+
     const searBtnHandleBnt = () => {
         if(searBtnHandle == 'sh-btn-inactive'){
            setSearBtnHandle('sh-btn-active')
@@ -164,6 +173,15 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                                 </li>
                             ))
                         }
+                        <li className="cursor-pointer py-2 px-5 font-bold  text-1xl relative inline-block text-left" onClick={()=>handleDispayDropdow(HandleDropdown? false:true)}>
+                            <span className={`inline-flex w-full justify-center gap-x-1.5 rounded-md  px-3 py-2 text-sm text-white  hover:bg-lime-400 ${HandleDropdown? 'bg-lime-400' : ''}`} id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                장르
+                                <svg className="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                                </svg>
+                            </span>
+                            {HandleDropdown?<Genre genres={data} />: ''}
+                        </li>
                     </ul>
                 </li>
                 {(!isDetailPage && !isview)?
@@ -189,7 +207,7 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                     :''
                 }
             </ul>
-            <div className={`filter-wrapper flex flex-row justify-between items-center ${isDetailPage || isview? '' :  'bg-lime-500 shadow-lg'} `}>
+            <div className={`filter-wrapper  flex flex-row justify-between items-center ${isDetailPage || isview? '' :  'bg-lime-500 shadow-lg'} `}>
                     <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-br-148 shadow-md `}>
                         {isDetailPage?
                             <>
