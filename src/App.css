@@ -158,3 +158,13 @@ li.activeFilter::after {
     transform: rotate(360deg);
   }
 } 
+
+
+
+
+/* medea screen config style */
+@media (max-width: 400px){
+  .md-screen-350{
+    flex-direction: column;
+  }
+}

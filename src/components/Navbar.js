@@ -154,12 +154,12 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                 {token? <li className="px-2 cursor-pointer" onClick={()=>Logout(token, user)}>Logout</li>:'' }
             </ul>
             {/* this defual background color bg-slate-300 */}
-            <ul className="shadow-md py-2 bg-black flex flex-col md:flex-row justify-start items-center">
+            <ul className=" shadow-md py-2 bg-black flex flex-col md:flex-row justify-start items-center">
                 <li>
                      <Link to={"/"}><img src={Logo}  alt="Logo" className="h-20 pl-2" /></Link>
                 </li>
                 <li>
-                    <ul className="px-4 flex flex-row justify-between items-center">
+                    <ul className="px-4 flex flex-row flex-wrap md:flex-nowrap justify-between items-center">
                         {
                             Menus.menuList.map((Element,index) =>(
                                 <li className={`
@@ -180,7 +180,7 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                                     <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
                                 </svg>
                             </span>
-                            {HandleDropdown?<Genre genres={data} />: ''}
+                            {HandleDropdown?<Genre genres={data}  currentPath={currentPath} />: ''}
                         </li>
                     </ul>
                 </li>

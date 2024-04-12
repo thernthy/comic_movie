@@ -3,9 +3,10 @@ import Pagination from "../../components/pageGinetion";
 import ComicCard from "../../components/comicCard/Index";
 import FetchingDataError from "../../components/fetchingError/Index";
 import { useHookGenre } from "../../hook/useHookGenre";
-//import FetchingDataError from "../components/fetchingError/Index";
 function Genrepage() {
+
     const {data, isLoading, error, setPage, pageCount, refetch} = useHookGenre()
+
     const renderMovies = () => {
 
          if(isLoading){
@@ -16,7 +17,7 @@ function Genrepage() {
              )
          }
 
-         if(error && data.data.length === 0){
+         if(error || data.data.length === 0){
              return(
                 <FetchingDataError refetch={refetch} />
              )
