@@ -1,6 +1,6 @@
 {
   "name": "comic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://comic-001.kotv-001.com/",
   "private": true,
   "dependencies": {
