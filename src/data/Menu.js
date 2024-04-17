@@ -34,6 +34,59 @@ const Menus = {
         { path:'/complate', menu_name: '완전한', specific_name: '컴플리트', other:''},
         { path:'/lates', menu_name: '지각', specific_name: '지각', other:''},
         { path:'/popularity', menu_name: '인기', specific_name: '인기', other:''},
+    ],
+    consonant:[
+        {
+          name: '전체', specific_name:null
+        },
+        {
+          name: 'ㄱ', specific_name:null
+        },
+        {
+          name: 'ㄴ', specific_name:null
+        },
+        {
+          name: 'ㄷ', specific_name:null
+        },
+        {
+          name: 'ㄹ', specific_name:null
+        },
+        {
+          name: 'ㅁ', specific_name:null
+        },
+        {
+          name: 'ㅂ', specific_name:null
+        },
+        {
+          name: 'ㅅ', specific_name:null
+        },
+        {
+          name: 'ㅇ', specific_name:null
+        },
+        {
+          name: 'ㅈ', specific_name:null
+        },
+        {
+          name: 'ㅊ', specific_name:null
+        },
+        {
+          name: 'ㅋ', specific_name:null
+        },
+        {
+          name: 'ㅌ', specific_name:null
+        },
+        {
+          name: 'ㅍ', specific_name:null
+        },
+        {
+          name: 'ㅎ', specific_name:null
+        },
+        {
+          name: 'a-z', specific_name:null
+        },
+        {
+          name: '0-9', specific_name:null
+        },
     ]
 }
 

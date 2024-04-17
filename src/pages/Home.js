@@ -4,8 +4,14 @@ import Pagination from "../components/pageGinetion";
 import { useHookComic } from "../hook/useHookComic";
 import ComicCard from "../components/comicCard/Index";
 import FetchingDataError from "../components/fetchingError/Index";
+import { BottomHeader } from "../components/botomheader";
 function Home() {
-    const { data, isLoading, error, setPage, pageCount, refetch } = useHookComic();
+    const { data, isLoading, error, setPage, filterDate, setConsonant, setFilterDate, setGenre, pageCount, refetch } = useHookComic();
+
+    const handleGenres = (genre) => {
+        setGenre(genre)
+    }
+
     const renderMovies = () => {
         if(isLoading){
             return(
@@ -41,6 +47,7 @@ function Home() {
 
     return(
         <div className="comic-card-wrapper">
+              <BottomHeader setGenre={handleGenres}  setConsonant={setConsonant} setFilterDate={setFilterDate} filterDate={filterDate} />
                 { renderMovies() }
                <Pagination 
                     setPage={setPage}

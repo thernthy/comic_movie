@@ -5,7 +5,6 @@ import { faSearch, faArrowCircleLeft, faClose} from '@fortawesome/free-solid-svg
 import { useHistory, useLocation, Link, useNavigate } from 'react-router-dom';
 import Menus from '../data/Menu';
 import Logo from '../asset/img/logo.jpg';
-import { Genre } from "./render _catecory";
 import { genresContext } from "../Appcontrollers/useHookGenre";
 function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
     const location = useLocation();
@@ -20,8 +19,13 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
     const [searBtnHandle, setSearBtnHandle] = useState('sh-btn-inactive');
     const [setActivFillter, setFilterActivClass] = useState('filterOut')
     const searchValue = useRef(null);
+
     const [HandleDropdown, setHandleDropDown] = useState(false)
     const [filemenuActive, setFiltermenuActive] = useState('');
+
+    // const genreScroll = useRef(); // We will use React useRef hook to reference the wrapping div:
+    // const { events } = useDraggable(genreScroll); // Now we pass the reference to the useDraggable hook:
+
 
     const { data } = useContext(genresContext)
 
@@ -41,6 +45,7 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
         };
     }, []);
     
+
    const handleDispayDropdow = (status) => {
      setHandleDropDown(status)
    }
@@ -200,18 +205,34 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                 }
             </ul>
 
-            <ul className="flex flex-row justify-between items-center text-white bg-black whitespace-nowrap overflow-x-auto py-2 px-2">
-                    {<Genre genres={data}  currentPath={currentPath} />}
-            </ul>
 
-            <div className={`filter-wrapper  flex flex-row justify-between items-center ${isDetailPage || isview? '' :  'bg-lime-500 shadow-lg'} `}>
+            {/* <div className={`filter-wrapper  flex flex-row justify-between items-center bg-black`}>
                     <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-br-148 shadow-md `}>
+                        <Link to={"/"} className="text-white">장르:</Link>
+                    </div>
+
+                    <div className="flex flex-row justify-start items-center gap-2 w-11/12">
+                        {(!isDetailPage && !isview)?
+                        
+                        <ul className="flex flex-row justify-between items-center text-white bg-black scrollbar-hide whitespace-nowrap overflow-x-auto py-2 px-2"
+                            {...events}
+                            ref={genreScroll}
+                        >
+                                    {<Genre genres={data}  currentPath={currentPath} />}
+                            </ul>
+                        :''
+                        }
+                    </div>
+            </div> */}
+
+            {/* <div className={`filter-wrapper  flex flex-row justify-between items-center ${isDetailPage || isview? '' :  'bg-lime-500 shadow-lg'} `}>
+                    <div className={` filter-icon-wrapper w-14 h-14 flex justify-center whitespace-nowrap items-center text-white  `}>
                         {isDetailPage?
                             <>
                                 <Link to={"/"}><FontAwesomeIcon icon={faArrowCircleLeft}  className=" mr-3 text-2xl text-slate-600" /></Link>
                             </>
-                            :
-                            ''
+                            :"요일:"
+
                         }
                     </div>
 
@@ -234,11 +255,11 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                 </div>
                 {!isDetailPage?
                     <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-bl-148 shadow-md`}>
-                        {/*<FontAwesomeIcon icon={faFilter} className=" mr-3 text-2xl text-slate-600" onClick={handleActivFilter}/>*/}
+                        {/*<FontAwesomeIcon icon={faFilter} className=" mr-3 text-2xl text-slate-600" onClick={handleActivFilter}/>
                     </div>
                  : ''
                 }
-            </div>
+            </div> */}
         </div>
     )
 }

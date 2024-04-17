@@ -3,11 +3,15 @@ import { useQuery } from "@tanstack/react-query";
 import { GetComicAxios } from "../Appcontrollers/comicXciosClient";
 
 export const useHookComic = () => {
+    const [genre, setGenre] = useState(null)
+    const [consonant, setConsonant] = useState(null)
+    const [filterDate, setFilterDate] = useState(null)
     const [page, setPage] = useState(1)
     const [pageCount, setPageCount] = useState()
-    const fetchMovies = async (page) => {
+    const fetchMovies = async (page, filterDate,  genre, consonant) => {
         try {
-            const response = await GetComicAxios.get(`/comic?page=${page}&token=.thenthy&filter=all&pageRequest=24`, {
+            const response = await GetComicAxios.get(`/comic?page=${page}&token=.thenthy${filterDate? '&filterBy='+ filterDate : '&filter=all'}${genre? '&requestCategory='+genre : ""}${consonant?'&consonant='+consonant:''}&pageRequest=24`, 
+            {
                 headers: {
                     'X-API-Key' : process.env.REACT_APP_API_KEY
                 }
@@ -32,13 +36,13 @@ export const useHookComic = () => {
     
     const { data, isLoading, error, isError, refetch } = useQuery(
         {
-            queryKey: ["comic", page],
-            queryFn: () => fetchMovies(page),
+            queryKey: ["comic", page, genre, filterDate, consonant],
+            queryFn: () => fetchMovies(page, filterDate,  genre, consonant),
             staleTime: 1000,
             onSuccess: onSuccess,
             onError: onError,
         }
     )
 
-    return {data, isLoading, error, setPage, pageCount, refetch}
+    return {data, isLoading, error, setPage, filterDate, setFilterDate, setGenre, setConsonant, genre, pageCount, refetch}
 }

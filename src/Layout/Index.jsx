@@ -54,7 +54,7 @@ function Index() {
                     user={user} 
                 />
             </header>
-            <main className={`body-wrapper max-h-screen bg-black pt-80 md:pt-48  py-3 md:px-12 lg:px-32`} style={{ scrollSnapType: 'x mandatory', overflowX: 'auto' }}>
+            <main className={`body-wrapper max-h-screen bg-black pt-80 md:pt-40  py-3 md:px-12 lg:px-32`} style={{ scrollSnapType: 'x mandatory', overflowX: 'auto' }}>
                 {
                 oopStatus?
                 <Oop message={oopMessage} />

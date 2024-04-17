@@ -2,22 +2,25 @@ import { Link } from "react-router-dom"
 
 
 
-export const Genre = ({genres, currentPath}) => {
+export const Genre = ({genres, setGenre, currentPath}) => {
+    const handleMenutClick = (genreId) => {
+        setGenre(genreId)
+    }
     if(genres){
         return(
             <>
                     {genres?.map((genre, index) => (
-                        <li>
-                            <Link to={`categories=by/${genre.name}/${genre.id}`} key={genre.id} className={`
+                        <li className="cursor-pointer py-2 px-4 text-sm text-red-400 hover:bg-red-400 hover:text-white" key={genre.id} onClick={handleMenutClick(genre.id)}>
+                            {/* <Link to={`categories=by/${genre.name}/${genre.id}`} key={genre.id} className={`
                             
                                 text-red-400 
                                 block px-4 
                                 py-2 text-sm
                                 hover:bg-red-400 hover:text-white
                                 ${currentPath === "/categories=by/" + encodeURIComponent(genre.name) ? encodeURIComponent(genre.name) : encodeURIComponent(genre.name) + "/" + genre.id} ${currentPath === "/categories=by/" + encodeURIComponent(genre.name) + "/" + genre.id ? "bg-red-400 text-white" : ""}
-                                `} role="menuitem" tabIndex="-1" id="menu-item-0">
+                                `} role="menuitem" tabIndex="-1" id="menu-item-0"> */}
                                 {genre.name} 
-                            </Link>
+                            {/* </Link> */}
                         </li>
                     ))
 
