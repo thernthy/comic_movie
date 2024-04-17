@@ -173,15 +173,7 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                                 </li>
                             ))
                         }
-                        <li className="cursor-pointer py-2 px-5 font-bold  text-1xl relative inline-block text-left" onClick={()=>handleDispayDropdow(HandleDropdown? false:true)}>
-                            <span className={`inline-flex w-full justify-center gap-x-1.5 rounded-md  px-3 py-2 text-sm text-white  hover:bg-lime-400 ${HandleDropdown? 'bg-lime-400' : ''}`} id="menu-button" aria-expanded="true" aria-haspopup="true">
-                                장르
-                                <svg className="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-                                </svg>
-                            </span>
-                            {HandleDropdown?<Genre genres={data}  currentPath={currentPath} />: ''}
-                        </li>
+                       
                     </ul>
                 </li>
                 {(!isDetailPage && !isview)?
@@ -207,6 +199,11 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                     :''
                 }
             </ul>
+
+            <ul className="flex flex-row justify-between items-center text-white bg-black whitespace-nowrap overflow-x-auto py-2 px-2">
+                    {<Genre genres={data}  currentPath={currentPath} />}
+            </ul>
+
             <div className={`filter-wrapper  flex flex-row justify-between items-center ${isDetailPage || isview? '' :  'bg-lime-500 shadow-lg'} `}>
                     <div className={` filter-icon-wrapper w-14 h-14 flex justify-center items-center rounded-br-148 shadow-md `}>
                         {isDetailPage?
@@ -217,8 +214,10 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                             ''
                         }
                     </div>
+
                 <div className="flex flex-row justify-start items-center gap-2 w-11/12">
                     {(!isDetailPage && !isview)?
+                       
                         <ul className={`overflow-y-hidden px-6 filter-menue-wrapper overflow-x-auto flex flex-row gap-4  menue_wrapper ${setActivFillter == 'filterOut' ? 'filterOut': 'fileterActive'}`} onMouseMove={handleMouseMove} onMouseDown={handleMouseDown}>
                                 {
                                     Menus.menuFilturList.map((element, index)=>(
