@@ -7,6 +7,7 @@ import { RouterProvider } from 'react-router-dom';
 import routers from './router';
 import { ContextProvider } from './Appcontrollers/ContextProvider';
 import GenresProvider from './Appcontrollers/useHookGenre';
+import PlateProvider from './Appcontrollers/plate';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
 
@@ -15,7 +16,9 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <ContextProvider>
         <GenresProvider>
-          <RouterProvider router={routers} />
+          <PlateProvider>
+            <RouterProvider router={routers} />
+          </PlateProvider>
         </GenresProvider>
       </ContextProvider>
     </QueryClientProvider>

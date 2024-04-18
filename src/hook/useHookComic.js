@@ -6,11 +6,17 @@ export const useHookComic = () => {
     const [genre, setGenre] = useState(null)
     const [consonant, setConsonant] = useState(null)
     const [filterDate, setFilterDate] = useState(null)
+    const [plate, setPlate] = useState(null);
     const [page, setPage] = useState(1)
+
     const [pageCount, setPageCount] = useState()
-    const fetchMovies = async (page, filterDate,  genre, consonant) => {
+    const fetchMovies = async (page, filterDate,  genre, consonant, plate) => {
+        let basrq = '';
+        if(!filterDate && !genre &&!consonant && !plate){
+            basrq = '&filter=all'
+        }
         try {
-            const response = await GetComicAxios.get(`/comic?page=${page}&token=.thenthy${filterDate? '&filterBy='+ filterDate : '&filter=all'}${genre? '&requestCategory='+genre : ""}${consonant?'&consonant='+consonant:''}&pageRequest=24`, 
+            const response = await GetComicAxios.get(`/comic?page=${page}&token=.thenthy${basrq}${plate? '&p='+plate : ''}${filterDate? '&filterBy='+ filterDate : ''}${genre? '&requestCategory='+genre : ""}${consonant?'&consonant='+consonant:''}&pageRequest=24`, 
             {
                 headers: {
                     'X-API-Key' : process.env.REACT_APP_API_KEY
@@ -36,13 +42,28 @@ export const useHookComic = () => {
     
     const { data, isLoading, error, isError, refetch } = useQuery(
         {
-            queryKey: ["comic", page, genre, filterDate, consonant],
-            queryFn: () => fetchMovies(page, filterDate,  genre, consonant),
+            queryKey: ["comic", page, genre, filterDate, consonant, plate],
+            queryFn: () => fetchMovies(page, filterDate,  genre, consonant, plate),
             staleTime: 1000,
             onSuccess: onSuccess,
             onError: onError,
         }
     )
 
-    return {data, isLoading, error, setPage, filterDate, setFilterDate, setGenre, setConsonant, genre, pageCount, refetch}
+    return {
+            data,
+            isLoading, 
+            error, 
+            setPage, 
+            filterDate, 
+            setFilterDate, 
+            setGenre, 
+            consonant,
+            setConsonant, 
+            genre, 
+            pageCount, 
+            plate, 
+            setPlate,
+            refetch
+        }
 }

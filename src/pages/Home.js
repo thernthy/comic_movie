@@ -6,11 +6,23 @@ import ComicCard from "../components/comicCard/Index";
 import FetchingDataError from "../components/fetchingError/Index";
 import { BottomHeader } from "../components/botomheader";
 function Home() {
-    const { data, isLoading, error, setPage, filterDate, setConsonant, setFilterDate, setGenre, pageCount, refetch } = useHookComic();
+    const { 
+            data,
+            isLoading, 
+            error, 
+            setPage, 
+            filterDate, 
+            setFilterDate, 
+            genre, 
+            setGenre, 
+            consonant,
+            setConsonant, 
+            pageCount, 
+            plate, 
+            setPlate,
+            refetch
+     } = useHookComic();
 
-    const handleGenres = (genre) => {
-        setGenre(genre)
-    }
 
     const renderMovies = () => {
         if(isLoading){
@@ -47,12 +59,21 @@ function Home() {
 
     return(
         <div className="comic-card-wrapper">
-              <BottomHeader setGenre={handleGenres}  setConsonant={setConsonant} setFilterDate={setFilterDate} filterDate={filterDate} />
+              <BottomHeader 
+                    setGenres={[ setGenre, genre ]}  
+                    setConsonants={[ setConsonant, consonant ]} 
+                    setFilterDate={setFilterDate} 
+                    filterDate={filterDate}
+                    plates={[setPlate, plate]}
+                />
+
                 { renderMovies() }
+
                <Pagination 
                     setPage={setPage}
                     pageCount={pageCount}
                />
+
         </div>
     )
 }
