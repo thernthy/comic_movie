@@ -1,10 +1,11 @@
 import { faDrum, faEarListen } from "@fortawesome/free-solid-svg-icons";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Pagination from "../components/pageGinetion";
 import { useHookComic } from "../hook/useHookComic";
 import ComicCard from "../components/comicCard/Index";
 import FetchingDataError from "../components/fetchingError/Index";
 import { BottomHeader } from "../components/botomheader";
+import { DataNotFound } from "../components/DatanotFound/index";
 function Home() {
     const { 
             data,
@@ -33,26 +34,33 @@ function Home() {
             )
         }
 
-        if(error){
+
+        if(error || data.length === 0){
             return(
                <FetchingDataError refetch={refetch} />
             )
         }
 
           return (
-            <ul className="comic_items_wrapper grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
-                { data?.map(movie => (
-                        <ComicCard
-                                key={movie.comic_title_id}
-                                title={movie.title}
-                                poster={movie.photo_cover_path}
-                                id={movie.comic_title_id}
-                                year={movie.created_at}
-                        />
-                        
-                    ))
-               }
-            </ul>
+            <>
+                    <ul className="comic_items_wrapper grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
+                        { data?.map(movie => (
+                                <ComicCard
+                                    key={movie.comic_title_id}
+                                    title={movie.title}
+                                    poster={movie.photo_cover_path}
+                                    id={movie.comic_title_id}
+                                    year={movie.created_at}
+                                />
+                                
+                            ))
+                    }
+                    </ul>
+                <Pagination 
+                    setPage={setPage}
+                    pageCount={pageCount}
+                />
+            </>
           )
            
     }
@@ -66,14 +74,7 @@ function Home() {
                     filterDate={filterDate}
                     plates={[setPlate, plate]}
                 />
-
                 { renderMovies() }
-
-               <Pagination 
-                    setPage={setPage}
-                    pageCount={pageCount}
-               />
-
         </div>
     )
 }

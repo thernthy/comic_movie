@@ -16,35 +16,37 @@ function Lates() {
         )
       }
 
-      if(error) {
+      if(error || data.length === 0) {
         return(
            <FetchingDataError refetch={refetch} />
         )
       }
       return(
-        <ul className="comic_items_wrapper grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
-            { data?.map(movie => (
-                    <ComicCard
-                            key={movie.comic_title_id}
-                            title={movie.title}
-                            poster={movie.photo_cover_path}
-                            id={movie.comic_title_id}
-                            year={movie.created_at}
-                        />
-                        
-                    ))
-            }
-        </ul>
+        <>
+            <ul className="comic_items_wrapper grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-1">
+                { data?.map(movie => (
+                        <ComicCard
+                                key={movie.comic_title_id}
+                                title={movie.title}
+                                poster={movie.photo_cover_path}
+                                id={movie.comic_title_id}
+                                year={movie.created_at}
+                            />
+                            
+                        ))
+                }
+            </ul>
+            <Pagination 
+                setPage={setPage}
+                pageCount={pageCount}
+            />
+        </>
       )
    }
 
     return(
         <div className="comic-card-wrapper">
             { renderCompleteComic() }
-            <Pagination 
-                setPage={setPage}
-                pageCount={pageCount}
-            />
         </div>
     )
 }

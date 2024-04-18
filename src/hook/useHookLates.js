@@ -7,7 +7,7 @@ export const useHookLates = () => {
     const [pageCount, setPageCount] = useState()
     const fetchComic = async (page) => {
         try {
-            const response = await GetComicAxios.get(`/comic/completed?page=${page}&pageRequest=24`, {
+            const response = await GetComicAxios.get(`/comic/latest?page=${page}&pageRequest=24`, {
                 headers: {
                     'X-API-Key' : process.env.REACT_APP_API_KEY
                 }

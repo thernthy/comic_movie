@@ -45,8 +45,6 @@ export const BottomHeader = ({
         if (target === "플랫폼") {
             return <Platemenu handlePlate={handlePlate} seletedPalet={plates[1]}/>;
         }
-
-
         return null;
     }
 

@@ -18,8 +18,9 @@ body{
     height: fit-content;
     width: max-content;
     border-radius: 50%;
-    background-color: rgb(71 85 105 / var(--tw-bg-opacity));
-    border: 2px solid rgb(71 85 105 / var(--tw-bg-opacity));
+    color:white;
+    background-color: rgb(163 230 53);
+    border: 2px solid rgb(248 113 113);
 }
 #pagination > ul li.page-item.numberPage.pageActive {
     background: transparent;
@@ -33,7 +34,7 @@ a.page-link{
     margin: 0 5px;
 }
 li.page-item.disabled{
-    background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+    background-color: rgb(163 230 53);
     border-bottom-left-radius: 50%;
     border-top-left-radius: 50%;
     margin-right: 10px;
@@ -50,7 +51,7 @@ li.page-item.disabled .page-link{
     
 }
 li.page-item.nexitem{
-    background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+    background-color: rgb(163 230 53);
     border-bottom-right-radius: 50%;
     border-top-right-radius: 50%;
     margin-left: 10px;

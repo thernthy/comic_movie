@@ -73,8 +73,8 @@ function Index() {
                  <Outlet />
                 }
                 
+                <Footer />
             </main>
-            <Footer />
         </div>
     );
 }
