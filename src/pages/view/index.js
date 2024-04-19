@@ -14,7 +14,7 @@ const Readcomic = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    
+
     const renderReading = () => {
         if (isLoading) {
             return <Loading />

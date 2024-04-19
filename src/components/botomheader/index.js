@@ -57,9 +57,9 @@ export const BottomHeader = ({
                   <li className={`px-4 py-2 text-center text-white cursor-pointer w-full ${target === '장르별'? 'bg-red-400' : ''}`} onClick={() => handleShowing('장르별')}>        
                       장르별
                   </li>
-                  <li className={`px-4 py-2 text-center text-white cursor-pointer w-full ${target === '자음'? 'bg-red-400' : ''}`} onClick={() => handleShowing('자음')}>        
+                  {/* <li className={`px-4 py-2 text-center text-white cursor-pointer w-full ${target === '자음'? 'bg-red-400' : ''}`} onClick={() => handleShowing('자음')}>        
                       자음
-                  </li>
+                  </li> */}
                   <li className={`px-4 py-2 text-center text-white cursor-pointer w-full ${target === '플랫폼'? 'bg-red-400' : ''}`} onClick={() => handleShowing('플랫폼')}>        
                     플랫폼
                   </li>

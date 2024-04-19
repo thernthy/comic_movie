@@ -1,12 +1,15 @@
-import { faDrum, faEarListen } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+
+import React  from "react";
 import Pagination from "../components/pageGinetion";
 import { useHookComic } from "../hook/useHookComic";
 import ComicCard from "../components/comicCard/Index";
 import FetchingDataError from "../components/fetchingError/Index";
 import { BottomHeader } from "../components/botomheader";
-import { DataNotFound } from "../components/DatanotFound/index";
+
+
 function Home() {
+    
+    
     const { 
             data,
             isLoading, 
@@ -23,7 +26,7 @@ function Home() {
             setPlate,
             refetch
      } = useHookComic();
-
+    
 
     const renderMovies = () => {
         if(isLoading){
@@ -51,15 +54,15 @@ function Home() {
                                     poster={movie.photo_cover_path}
                                     id={movie.comic_title_id}
                                     year={movie.created_at}
+                                    genreId={movie.comic_category_id}
+                                    plateId={movie.Id_plate}
+                                    durateId={movie.Id_durate}
                                 />
                                 
                             ))
-                    }
+                        }
                     </ul>
-                <Pagination 
-                    setPage={setPage}
-                    pageCount={pageCount}
-                />
+
             </>
           )
            
@@ -75,6 +78,10 @@ function Home() {
                     plates={[setPlate, plate]}
                 />
                 { renderMovies() }
+                <Pagination 
+                    setPage={setPage}
+                    pageCount={pageCount}
+                />
         </div>
     )
 }

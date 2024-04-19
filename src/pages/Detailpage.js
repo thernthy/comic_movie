@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
-import cardItemIformation from '../data/Carddata';
-import { useParams, useSearchParams } from 'react-router-dom';
-
-import useFetchComicData from '../Appcontrollers/ComicDataController';
+import React from "react";
 import { UseGetDetailComic } from "../hook/useHookDetail";
 import FetchingDataError from "../components/fetchingError/Index";
 import { ComicDetail } from "../components/comicDetail";
 
 function DetialPage(){
-    const { data, isLoading, error, isError, refetch } = UseGetDetailComic();
+    const { data, isLoading, error,  refetch } = UseGetDetailComic();
+
     const renderDetailComic = () => {
+        window.scrollTo(0, 0);
         if(isLoading){
             return(
                 <div className='loding-wrapper fixed top-2/4 left-2/4 -translate-x-2/4 translate-y-2/4'> 
                     <span className="loader"></span> 
                 </div>
             )
+            
         }
         if(error) {
             return(

@@ -16,14 +16,10 @@ function Index() {
     const {
         user, 
         token, 
-        setUser, 
-        setToken,
         oopStatus, 
         oopMessage,
-        setOopStatus, 
-        setOopMessage
     } = useStateContext();
-    const  {data, isLoading, error, setPage, pageCount, setSearch, search, refetch} = useHookSearch();
+    const  {data, isLoading, error, setPage, pageCount, setSearch,  refetch} = useHookSearch();
     const [filter, setFilter] = useState('all');
     const [loading, setLoading] = useState(true);
     const [filterBy, setFilterBy] = useState(false)
@@ -54,7 +50,7 @@ function Index() {
                     user={user} 
                 />
             </header>
-            <main className={`body-wrapper max-h-screen bg-black pt-80 md:pt-40  py-3 md:px-12 lg:px-32`} style={{ scrollSnapType: 'x mandatory', overflowX: 'auto' }}>
+            <main className={`body-wrapper max-h-screen bg-black pt-80 md:pt-40  py-3 md:px-12 lg:px-32`} >
                 {
                 oopStatus?
                 <Oop message={oopMessage} />

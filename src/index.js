@@ -8,6 +8,7 @@ import routers from './router';
 import { ContextProvider } from './Appcontrollers/ContextProvider';
 import GenresProvider from './Appcontrollers/useHookGenre';
 import PlateProvider from './Appcontrollers/plate';
+import DurateProvider from './Appcontrollers/DateProvider';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
 
@@ -17,7 +18,9 @@ root.render(
       <ContextProvider>
         <GenresProvider>
           <PlateProvider>
-            <RouterProvider router={routers} />
+            <DurateProvider>
+              <RouterProvider router={routers} />
+            </DurateProvider>
           </PlateProvider>
         </GenresProvider>
       </ContextProvider>

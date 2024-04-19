@@ -30,15 +30,14 @@ function Completed() {
                                 poster={movie.photo_cover_path}
                                 id={movie.comic_title_id}
                                 year={movie.created_at}
+                                genreId={movie.comic_category_id}
+                                plateId={movie.Id_plate}
+                                durateId={movie.Id_durate}
                             />
                             
                         ))
                 }
             </ul>
-            <Pagination 
-                setPage={setPage}
-                pageCount={pageCount}
-            />
         </>
       )
    }
@@ -46,6 +45,11 @@ function Completed() {
     return(
         <div className="comic-card-wrapper">
             { renderCompleteComic() }
+
+            <Pagination 
+                setPage={setPage}
+                pageCount={pageCount}
+            />
         </div>
     )
 }

@@ -154,7 +154,6 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                     : ''
                 }
                 <li className="px-2 cursor-pointer" onClick={()=>handlerequestCatoon(token? true : false)}>Bookmark</li>
-                {/* <li className="px-2"><Link to={'/snnouncements'}>Announcements</Link></li> */}
 
                 {token? <li className="px-2 cursor-pointer" onClick={()=>Logout(token, user)}>Logout</li>:'' }
             </ul>
@@ -178,7 +177,9 @@ function Navbar({onMenuSwich, handlefilterBy,  token, user, setSearch}) {
                                 </li>
                             ))
                         }
-                       
+                        <li className={`cursor-pointer py-2 px-5 font-bold text-1xl  ${currentPath === '/snnouncements'? 'text-red-500' : 'text-white'}`}>
+                            <Link to={'/snnouncements'}>공지사항</Link>
+                        </li> 
                     </ul>
                 </li>
                 {(!isDetailPage && !isview)?
