@@ -1,9 +1,10 @@
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { genresContext } from "../../Appcontrollers/useHookGenre";
 import { plateContext } from "../../Appcontrollers/plate";
 import Menus from "../../data/Menu";
 import { durateContext } from "../../Appcontrollers/DateProvider";
+import { useLocation } from "react-router-dom";
 
 
 export const DateFilter = ({handleFilturDate, filterDate}) => {
@@ -31,6 +32,14 @@ export const DateFilter = ({handleFilturDate, filterDate}) => {
                                         </li>
                                     ))
                                 }
+                            <li className={`fiter-menu px-3 py-2 m-2 uppercase text-red-400 whitespace-nowrap hover:bg-red-400 hover:text-white cursor-pointer ${filterDate && filterDate ==='lates'? "bg-red-400 text-white": ''}`}  
+                                onClick={()=>handleFilterDate('lates')} >
+                                지각
+                            </li>
+                            <li className={`fiter-menu px-3 py-2 m-2 uppercase text-red-400 whitespace-nowrap hover:bg-red-400 hover:text-white cursor-pointer ${filterDate && filterDate ==='popularity'? "bg-red-400 text-white": ''}`}  
+                                onClick={()=>handleFilterDate('popularity')} >
+                                인기
+                            </li>
                         </ul>
                 </div>
             </div> 
@@ -38,32 +47,47 @@ export const DateFilter = ({handleFilturDate, filterDate}) => {
 }
 
 export const GenreMenu = ({ handleGenreChange, seletedGener }) => {
+    const { data, setCurrectPath } = useContext(genresContext);
+    const local = useLocation();
+    const currectPath = local.pathname;
+    useEffect(() => {
+        setCurrectPath(currectPath);
+    }, [currectPath, setCurrectPath]);
+
     const handleMenutClick = (genreId) => {
-        if(genreId!= seletedGener){
-            handleGenreChange(genreId)
-        }else{
-            handleGenreChange(null)
+        if (genreId !== seletedGener) {
+            handleGenreChange(genreId);
+        } else {
+            handleGenreChange(null);
         }
-    }
-    const {data} = useContext(genresContext)
+    };
 
-    return(
-        <div className={`filter-wrapper  flex flex-row justify-center items-center bg-black`}>
-                <div className="flex flex-row justify-center items-center gap-2">
-                        <ul className="flex flex-row justify-between items-center text-white bg-black flex-wrap gap-2 py-2 px-2"
+    const renderMenu = () => {
+        if (data?.length !== 0) {
+            return (
+                <ul className="flex flex-row justify-between items-center text-white bg-black flex-wrap gap-2 py-2 px-2">
+                    {data?.map((genre) => (
+                        <li
+                            key={genre.id}
+                            className={`cursor-pointer py-2 px-4 text-sm text-red-400 hover:bg-red-400 hover:text-white ${seletedGener && seletedGener === genre.id ? 'bg-red-400 text-white' : ''}`}
+                            onClick={() => handleMenutClick(genre.id)}
                         >
-                        {data?.map((genre, index) => (
-                        <li className={`cursor-pointer py-2 px-4 text-sm text-red-400 hover:bg-red-400 hover:text-white ${seletedGener && seletedGener=== genre.id? 'bg-red-400 text-white' : '' }`} key={genre.id} onClick={()=>handleMenutClick(genre.id)}>
-                                {genre.name} 
+                            {genre.name}
                         </li>
-                    ))
+                    ))}
+                </ul>
+            );
+        }
+    };
 
-                    }
-                        </ul>
-                </div>
+    return (
+        <div className={`filter-wrapper flex flex-row justify-center items-center bg-black`}>
+            <div className="flex flex-row justify-center items-center gap-2">
+                {renderMenu()}
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export const ConsonantMenu = ({ handleConsonant , sletedcosont }) => {
     
@@ -87,11 +111,15 @@ export const ConsonantMenu = ({ handleConsonant , sletedcosont }) => {
                                     </li>
                                 ))
                             }
+
+
                         </ul>
                 </div>
         </div>
     )
 }
+
+
 export const Platemenu = ({handlePlate, seletedPalet}) => {
     const { plate } = useContext(plateContext)
 

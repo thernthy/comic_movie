@@ -8,7 +8,6 @@ import {
 import Index from "./Layout/Index";
 import Login from "./pages/Login";
 import Auth from "./Layout/Auth";
-import Error from "./pages/Error";
 import Home from "./pages/Home";
 import DetialPage from "./pages/Detailpage";
 import Anouments from "./pages/Anouments";
@@ -16,11 +15,11 @@ import Completed from "./pages/complated";
 import { Path } from "./config/Path";
 import FilterData from "./pages/filterData";
 import Readcomic from "./pages/view";
-import Lates from "./pages/letes/index"
-import Popular from "./pages/popular/index";
 import { Bookmakr } from "./pages/bookmark/index";
 import  {PageNotFound }  from "./pages/404/index";
 import Genrepage from "./pages/Genre/index";
+import ComicPage from "./pages/comic";
+import PhototoonPage from "./pages/phototoon";
 const message = '404';
 
 const routers = createBrowserRouter([
@@ -38,12 +37,12 @@ const routers = createBrowserRouter([
         element: <Completed />,
       },
       {
-        path: "/lates",
-        element: <Lates />,
+        path: "/comics",
+        element: <ComicPage />,
       },
       {
-        path: "/popularity",
-        element: <Popular />,
+        path: "/phototoon",
+        element: <PhototoonPage />,
       },
       {
         path: Path.GENREFILTER,

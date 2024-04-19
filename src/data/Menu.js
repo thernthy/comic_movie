@@ -30,10 +30,12 @@ const Menus = {
         { path:'/filtur', filturName: '새로운', spaceficVanlu: 'new' },
     ],
     menuList: [
-        { path:'/', menu_name: '집', specific_name: '모든 만화', other:''},
-        { path:'/complate', menu_name: '완전한', specific_name: '컴플리트', other:''},
-        { path:'/lates', menu_name: '지각', specific_name: '지각', other:''},
-        { path:'/popularity', menu_name: '인기', specific_name: '인기', other:''},
+        { path:'/', menu_name: '연재', specific_name: '연재', other:''},
+        { path:'/complate', menu_name: '연재', specific_name: '연재', other:''},
+        { path:'/comics', menu_name: '코믹스', specific_name: '코믹스', other:''},
+        { path:'/phototoon', menu_name: '포토툰', specific_name: '포토툰', other:''},
+        { path:'/webtoon', menu_name: '웹소설(준비중)', specific_name: '웹소설(준비중)', other:''}, 
+
     ],
     consonant:[
         {
